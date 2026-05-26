@@ -756,6 +756,7 @@
         <section><h4>しんどくなりやすい場面</h4><ul>${r.strain.map(s=>`<li>${s}</li>`).join("")}</ul></section>
         <section><h4>相性がいい相手</h4><p>${r.match}</p></section>
         <section><h4>BURNでおすすめの残し方</h4><ul>${r.burn.map(s=>`<li>${s}</li>`).join("")}</ul></section>
+        <section style="text-align:center;"><span style="display:inline-flex;align-items:center;justify-content:center;gap:8px;"><img src="../carousel/after/mobby_gal_toka.webp" alt="もびち" loading="lazy" decoding="async" style="width:64px;height:64px;object-fit:contain;border:0;"><a href="https://px.a8.net/svt/ejp?a8mat=4B3YV8+F171O2+4GRI+BW8O2&a8ejpredirect=https%3A%2F%2Fstore.fits-japan.com%2Fshop%2Fproduct_categories%2Fpuananala" rel="nofollow" style="color:#0066cc;">あなたにおすすめの香水を見つける</a></span><p style="margin:8px 0 0;font-size:11px;color:var(--muted);">このリンクには広告が含まれます</p><img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B3YV8+F171O2+4GRI+BW8O2" alt=""></section>
         ${M(r.affirmation)}
       </div>
       <div class="love-diagnosis__nav">
