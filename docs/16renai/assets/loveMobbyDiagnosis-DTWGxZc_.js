@@ -589,8 +589,8 @@ const _='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800
         </button>
       `:""}
     </article>
-  `}function ce(e="HLTO",n="HLTO"){const t=J(e,n),o=c[e],r=c[n];return!t||!o||!r?'<p class="love-compatibility__empty">相性データが見つかりませんでした。</p>':`
-    <article class="love-compatibility-result" data-love-compatibility-result>
+  `}function ce(e="HLTO",n="HLTO"){const t=J(e,n),o=c[e],r=c[n],s=resultBg(o),d=resultBg(r);return!t||!o||!r?'<p class="love-compatibility__empty">相性データが見つかりませんでした。</p>':`
+    <article class="love-compatibility-result" data-love-compatibility-result style="--compat-bg-first: url('${s}'); --compat-bg-second: url('${d}');">
       <div class="love-compatibility-result__head">
         <div class="love-compatibility-result__pair">
           <figure>
@@ -605,18 +605,20 @@ const _='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800
         </div>
         <strong>${t.stars}${t.score?`<span>${t.score} / 100点</span>`:""}</strong>
       </div>
-      <section>
-        <h4>良いところ</h4>
-        <ul>${t.good.map(a=>`<li>${a}</li>`).join("")}</ul>
-      </section>
-      <section>
-        <h4>注意したいところ</h4>
-        <ul>${t.caution.map(a=>`<li>${a}</li>`).join("")}</ul>
-      </section>
-      <section>
-        <h4>仲良く続けるコツ</h4>
-        <ul>${t.improvement.map(a=>`<li>${a}</li>`).join("")}</ul>
-      </section>
+      <div class="love-compatibility-columns">
+        <article class="love-compatibility-column love-compatibility-column--good">
+          <h4>良いところ</h4>
+          <ul>${t.good.map(a=>`<li>${a}</li>`).join("")}</ul>
+        </article>
+        <article class="love-compatibility-column love-compatibility-column--caution">
+          <h4>注意したいところ</h4>
+          <ul>${t.caution.map(a=>`<li>${a}</li>`).join("")}</ul>
+        </article>
+        <article class="love-compatibility-column love-compatibility-column--improvement">
+          <h4>仲良く続けるコツ</h4>
+          <ul>${t.improvement.map(a=>`<li>${a}</li>`).join("")}</ul>
+        </article>
+      </div>
     </article>
   `}function y(e,n,t="HLTO"){return`
     <label class="love-compatibility-select">

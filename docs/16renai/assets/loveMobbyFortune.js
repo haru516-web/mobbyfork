@@ -383,7 +383,7 @@
         <section><h4>恋が動く日</h4><p>${fortune.moveDays.map((day) => `${day}日`).join("、")}</p></section>
         <section><h4>注意したい日</h4><p>${fortune.cautionDay}日。${esc(fortune.cautionText)}</p></section>
         <section class="love-fortune-mission"><h4>今月のミッション</h4><p>${esc(fortune.monthlyMission)}</p></section>
-        <section class="love-fortune-keyperson"><h4>今月のキーパーソン：${esc(fortune.keyPerson.name)}</h4><div class="love-fortune-keyperson__body">${keyMeta ? `<img src="${image(keyMeta)}" alt="${esc(fortune.keyPerson.name)}" loading="lazy" decoding="async">` : ""}<p>${esc(fortune.keyPerson.role)}。このタイプの人に診断を送ってみると、今月のヒントが増えるかも。</p></div><button class="button button--primary button--full" type="button" data-love-fortune-share data-share-text="${esc(fortune.shareText)}" data-share-url="${esc(url)}">今月のキーパーソンかも？と思う人に送る</button></section>
+        <section class="love-fortune-keyperson"><h4>今月のキーパーソン：${esc(fortune.keyPerson.name)}</h4><div class="love-fortune-keyperson__body">${keyMeta ? `<img src="${image(keyMeta)}" alt="${esc(fortune.keyPerson.name)}" loading="lazy" decoding="async">` : ""}<p>${esc(fortune.keyPerson.role)}。このタイプの人に診断を送ってみると、今月のヒントが増えるかも。</p></div><button class="button button--primary button--full" type="button" data-love-fortune-share data-share-text="${esc(fortune.shareText)}" data-share-url="${esc(url)}">タイプを知りたい人に診断を送る</button></section>
         <section><h4>今月のラッキーアイテム</h4><p>${esc(fortune.luckyItem)}</p></section>
         <section class="love-fortune-save"><h4>保存カード向けの短文</h4><p>${esc(fortune.saveCardText)}</p></section>
       </article>`;

@@ -559,32 +559,50 @@
     }
 
     .page--diagnosis.page--result .love-compatibility {
-      border-color: rgba(255, 255, 255, .32) !important;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, .10), transparent 46%),
-        linear-gradient(180deg, rgba(14, 16, 24, .82), rgba(13, 12, 18, .72)) !important;
+      display: grid;
+      gap: 12px;
+      padding: 0 !important;
+      border-color: transparent !important;
+      background: transparent !important;
       color: rgba(255, 255, 255, .94) !important;
-      box-shadow: 0 18px 42px rgba(0, 0, 0, .30) !important;
-      -webkit-backdrop-filter: blur(12px) saturate(1.08);
-      backdrop-filter: blur(12px) saturate(1.08);
+      box-shadow: none !important;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    .page--diagnosis.page--result .love-compatibility[hidden],
+    .page--diagnosis.page--result [data-love-compatibility-panel][hidden] {
+      display: none !important;
     }
 
     .page--diagnosis.page--result .love-compatibility__head {
-      text-shadow: 0 2px 10px rgba(0, 0, 0, .48);
+      display: grid;
+      gap: 7px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, .84);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .91), rgba(255, 250, 252, .88));
+      box-shadow: 0 14px 32px rgba(48, 34, 42, .18);
+      -webkit-backdrop-filter: blur(18px) saturate(1.12);
+      backdrop-filter: blur(18px) saturate(1.12);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .72);
+    }
+
+    .page--diagnosis.page--result .love-compatibility__form {
+      display: grid;
+      gap: 12px;
     }
 
     .page--diagnosis.page--result .love-compatibility__head h3,
     .page--diagnosis.page--result .love-compatibility-result h4,
     .page--diagnosis.page--result .love-compatibility-result__pair figcaption {
-      color: #ffe7f1 !important;
+      color: #35282d !important;
       font-weight: 900 !important;
-      text-shadow:
-        0 2px 10px rgba(0, 0, 0, .58),
-        0 0 18px rgba(226, 61, 117, .28);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .72);
     }
 
     .page--diagnosis.page--result .love-compatibility__head h3 {
-      color: #fff4f9 !important;
+      color: #3f2d32 !important;
       letter-spacing: 0;
     }
 
@@ -593,30 +611,42 @@
     .page--diagnosis.page--result .love-compatibility-result li,
     .page--diagnosis.page--result .love-compatibility-result__head strong span,
     .page--diagnosis.page--result .love-compatibility-result__pair i {
-      color: rgba(255, 255, 255, .88) !important;
+      color: rgba(53, 40, 45, .82) !important;
       font-weight: 600;
-      text-shadow: 0 1px 6px rgba(0, 0, 0, .28);
+      text-shadow: none;
     }
 
     .page--diagnosis.page--result .love-compatibility-select span {
       display: inline-block;
       margin-bottom: 7px;
-      color: rgba(255, 255, 255, .90) !important;
+      color: rgba(53, 40, 45, .82) !important;
       font-size: 12px;
       font-weight: 900;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, .42);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, .72);
+    }
+
+    .page--diagnosis.page--result .love-compatibility-select {
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, .84);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .91), rgba(255, 250, 252, .88));
+      box-shadow: 0 14px 32px rgba(48, 34, 42, .18);
+      -webkit-backdrop-filter: blur(18px) saturate(1.12);
+      backdrop-filter: blur(18px) saturate(1.12);
     }
 
     .page--diagnosis.page--result .love-compatibility-select .field__input {
-      border-color: rgba(255, 255, 255, .56) !important;
+      border-color: rgba(255, 219, 232, .86) !important;
       background:
-        linear-gradient(180deg, rgba(38, 40, 49, .88), rgba(33, 33, 41, .78)) !important;
+        linear-gradient(180deg, rgba(231, 116, 154, .88), rgba(190, 82, 126, .82)) !important;
       color: #fff !important;
       box-shadow:
-        inset 0 1px rgba(255, 255, 255, .18),
-        0 12px 26px rgba(0, 0, 0, .24);
+        inset 0 1px rgba(255, 255, 255, .34),
+        0 12px 26px rgba(166, 58, 105, .22);
       font-weight: 900;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, .38);
+      text-shadow: 0 2px 8px rgba(92, 25, 55, .34);
     }
 
     .page--diagnosis.page--result .love-compatibility-select .field__input option {
@@ -625,9 +655,88 @@
     }
 
     .page--diagnosis.page--result .love-compatibility-result {
-      border-color: rgba(255, 255, 255, .28) !important;
-      background: linear-gradient(180deg, rgba(20, 22, 30, .52), rgba(15, 15, 22, .46)) !important;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, .20);
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border-color: rgba(255, 255, 255, .84) !important;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .91), rgba(255, 250, 252, .88)) !important;
+      box-shadow: 0 14px 32px rgba(48, 34, 42, .18);
+      -webkit-backdrop-filter: blur(18px) saturate(1.12);
+      backdrop-filter: blur(18px) saturate(1.12);
+    }
+
+    .page--diagnosis.page--result .love-compatibility-result::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .56), rgba(255, 250, 252, .70)),
+        var(--compat-bg-first),
+        var(--compat-bg-second);
+      background-position: center, left top, right bottom;
+      background-size: cover, 72% auto, 72% auto;
+      background-repeat: no-repeat;
+      opacity: .34;
+      filter: saturate(1.08);
+    }
+
+    .page--diagnosis.page--result .love-compatibility-columns {
+      display: grid;
+      gap: 12px;
+    }
+
+    .page--diagnosis.page--result .love-compatibility-column {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: grid;
+      gap: 8px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, .84);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .91), rgba(255, 250, 252, .88));
+      box-shadow: 0 14px 32px rgba(48, 34, 42, .18);
+      -webkit-backdrop-filter: blur(18px) saturate(1.12);
+      backdrop-filter: blur(18px) saturate(1.12);
+    }
+
+    .page--diagnosis.page--result .love-compatibility-column::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .58), rgba(255, 250, 252, .72)),
+        var(--compat-column-bg, var(--compat-bg-first));
+      background-position: center;
+      background-size: cover;
+      opacity: .32;
+      filter: saturate(1.1);
+    }
+
+    .page--diagnosis.page--result .love-compatibility-column--good {
+      --compat-column-bg: var(--compat-bg-first);
+    }
+
+    .page--diagnosis.page--result .love-compatibility-column--caution {
+      --compat-column-bg: var(--compat-bg-second);
+    }
+
+    .page--diagnosis.page--result .love-compatibility-column--improvement::before {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .58), rgba(255, 250, 252, .72)),
+        var(--compat-bg-first),
+        var(--compat-bg-second);
+      background-position: center, left top, right bottom;
+      background-size: cover, 68% auto, 68% auto;
+      background-repeat: no-repeat;
+    }
+
+    .page--diagnosis.page--result .love-compatibility-column ul {
+      display: grid;
+      gap: 7px;
+      padding-left: 1.2em;
     }
 
     .page--diagnosis.page--result .love-compatibility-result__pair img {
