@@ -7155,12 +7155,12 @@
     .hero-diagnosis-caption {
       width: 100%;
       margin: 0;
-      padding: 0 6px 2px;
-      color: rgba(47, 42, 36, 0.82);
-      font-size: 0.86rem;
+      padding: 2px 8px 4px;
+      color: rgba(47, 42, 36, 0.78);
+      font-size: 0.84rem;
       font-weight: 800;
-      line-height: 1.72;
-      letter-spacing: 0.03em;
+      line-height: 1.76;
+      letter-spacing: 0.02em;
       text-align: center;
     }
 
@@ -7169,15 +7169,16 @@
     }
 
     .hero-diagnosis-caption .caption-lead {
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       color: #5d3b20;
-      font-size: 0.94rem;
+      font-size: 0.96rem;
       font-weight: 900;
     }
 
     .hero-diagnosis-caption .caption-detail {
-      max-width: 34em;
+      max-width: 28em;
       margin: 0 auto;
+      color: rgba(47, 42, 36, 0.86);
     }
 
     #diagnosisPopup .popup-content {
@@ -7689,14 +7690,19 @@
 
       .hero-diagnosis-caption {
         width: 100%;
+        padding: 0 3px 2px;
         font-size: 0.72rem;
-        line-height: 1.66;
+        line-height: 1.72;
         letter-spacing: 0.02em;
       }
 
       .hero-diagnosis-caption .caption-lead {
-        margin-bottom: 3px;
+        margin-bottom: 5px;
         font-size: 0.82rem;
+      }
+
+      .hero-diagnosis-caption .caption-detail {
+        max-width: 24em;
       }
 
       #diagnosisPopup .popup-content {
@@ -8686,12 +8692,40 @@
     .footer-note-title {
       width: 100%;
       margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
       color: #5d3b20;
       font-size: 1rem;
       font-weight: 900;
       line-height: 1.2;
       letter-spacing: 0.08em;
       text-align: center;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .footer-note-title::after {
+      content: "＋";
+      margin-left: 8px;
+      color: #d2691e;
+      font-weight: 900;
+    }
+
+    .footer-note-embed.is-open .footer-note-title::after {
+      content: "−";
+    }
+
+    .footer-note-list {
+      width: 100%;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-note-embed.is-open .footer-note-list {
+      display: flex;
     }
 
     .footer-note-embed .note-embed {
@@ -8986,7 +9020,8 @@
             <p class="hero-diagnosis-caption">
               <span class="caption-lead">キャラを見れば、あなたがわかる。</span>
               <span>学校での立ち位置、恋愛、推し活スタイル。</span>
-              <span class="caption-detail">モビー診断は、自分でもうまく説明できない“私っぽさ”を、ひと目で伝わるキャラクターにする診断です。</span>
+              <span class="caption-detail">自分でもうまく説明できない“私っぽさ”を、</span>
+              <span class="caption-detail">一目で伝わる、持ち歩けるキャラクターにする。それがモビー診断です。</span>
             </p>
           </div>
         </div>
@@ -9703,10 +9738,13 @@
             </div>
           </div>
           <div class="footer-note-embed">
-            <h2 class="footer-note-title">オススメ記事</h2>
-            <iframe class="note-embed" src="https://note.com/embed/notes/n37496da66d8d" style="border: 0; display: block; max-width: 99%; width: 494px; padding: 0px; margin: 10px 0px; position: static; visibility: visible;" height="178"></iframe>
-            <iframe class="note-embed" src="https://note.com/embed/notes/n284ff0adeb2e" style="border: 0; display: block; max-width: 99%; width: 494px; padding: 0px; margin: 10px 0px; position: static; visibility: visible;" height="178"></iframe>
-            <iframe class="note-embed" src="https://note.com/embed/notes/n01e26a8f5ecd" style="border: 0; display: block; max-width: 99%; width: 494px; padding: 0px; margin: 10px 0px; position: static; visibility: visible;" height="178"></iframe>
+            <button class="footer-note-title" id="footerNoteToggle" type="button" aria-expanded="false" aria-controls="footerNoteList">オススメ記事</button>
+            <div class="footer-note-list" id="footerNoteList" hidden>
+              <iframe class="note-embed" src="https://note.com/embed/notes/n37496da66d8d" style="border: 0; display: block; max-width: 99%; width: 494px; padding: 0px; margin: 10px 0px; position: static; visibility: visible;" height="178"></iframe>
+              <iframe class="note-embed" src="https://note.com/embed/notes/n284ff0adeb2e" style="border: 0; display: block; max-width: 99%; width: 494px; padding: 0px; margin: 10px 0px; position: static; visibility: visible;" height="178"></iframe>
+              <iframe class="note-embed" src="https://note.com/embed/notes/n01e26a8f5ecd" style="border: 0; display: block; max-width: 99%; width: 494px; padding: 0px; margin: 10px 0px; position: static; visibility: visible;" height="178"></iframe>
+              <iframe class="note-embed" src="https://note.com/embed/notes/n644c7158b425" style="border: 0; display: block; max-width: 99%; width: 494px; padding: 0px; margin: 10px 0px; position: static; visibility: visible;" height="178"></iframe>
+            </div>
           </div>
           <script async src="https://note.com/scripts/embed.js" charset="utf-8"></script>
           <button class="btn btn-secondary" id="openVideoPopup">動画</button>
@@ -13169,24 +13207,42 @@
         start();
       }
 
+      function initFooterNoteToggle() {
+        const wrap = document.querySelector('.footer-note-embed');
+        const toggle = document.getElementById('footerNoteToggle');
+        const list = document.getElementById('footerNoteList');
+        if (!wrap || !toggle || !list || toggle.dataset.ready === 'true') return;
+
+        toggle.dataset.ready = 'true';
+        toggle.addEventListener('click', () => {
+          const open = !wrap.classList.contains('is-open');
+          wrap.classList.toggle('is-open', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          list.hidden = !open;
+        });
+      }
+
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
           initHeroDiagnosisTabs();
           initHeroDiagnosisAllToggle();
           initHeroDiagnosisAutoAdvance();
           initFooterFeatureSlider();
+          initFooterNoteToggle();
         }, { once: true });
       } else {
         initHeroDiagnosisTabs();
         initHeroDiagnosisAllToggle();
         initHeroDiagnosisAutoAdvance();
         initFooterFeatureSlider();
+        initFooterNoteToggle();
       }
       window.addEventListener('load', () => {
         initHeroDiagnosisTabs();
         initHeroDiagnosisAllToggle();
         initHeroDiagnosisAutoAdvance();
         initFooterFeatureSlider();
+        initFooterNoteToggle();
       }, { once: true });
     })();
   </script>
