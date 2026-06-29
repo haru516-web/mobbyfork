@@ -1,0 +1,182 @@
+[
+  {
+    "id": "01_moteru",
+    "title": "モテる",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\01_moteru_ranking.png",
+    "ranking": [
+      "1位 晴れ間の本命",
+      "2位 ひなたの愛され人",
+      "3位 毛布をかける守り人",
+      "4位 静かな港の相棒",
+      "5位 恋に旗を振る人"
+    ]
+  },
+  {
+    "id": "02_aisare",
+    "title": "愛され力",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\02_aisare_ranking.png",
+    "ranking": [
+      "1位 ひなたの愛され人",
+      "2位 花束の主人公",
+      "3位 晴れ間の本命",
+      "4位 雨宿りの待ち人",
+      "5位 秘密の星"
+    ]
+  },
+  {
+    "id": "03_honmei",
+    "title": "本命感",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\03_honmei_ranking.png",
+    "ranking": [
+      "1位 晴れ間の本命",
+      "2位 静かな港の相棒",
+      "3位 静かな灯",
+      "4位 毛布をかける守り人",
+      "5位 ひなたの愛され人"
+    ]
+  },
+  {
+    "id": "04_anshin",
+    "title": "安心感",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\04_anshin_ranking.png",
+    "ranking": [
+      "1位 静かな港の相棒",
+      "2位 毛布をかける守り人",
+      "3位 静かな灯",
+      "4位 晴れ間の本命",
+      "5位 ひなたの愛され人"
+    ]
+  },
+  {
+    "id": "05_tokimeki",
+    "title": "ときめき",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\05_tokimeki_ranking.png",
+    "ranking": [
+      "1位 花束の主人公",
+      "2位 夜風のロマンチスト",
+      "3位 風まかせの小悪魔",
+      "4位 胸奥のロマン",
+      "5位 秘密の星"
+    ]
+  },
+  {
+    "id": "06_koakuma",
+    "title": "小悪魔力",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\06_koakuma_ranking.png",
+    "ranking": [
+      "1位 風まかせの小悪魔",
+      "2位 地図を広げる冒険家",
+      "3位 夜風のロマンチスト",
+      "4位 月影のミューズ",
+      "5位 晴れ間の本命"
+    ]
+  },
+  {
+    "id": "07_hoyoryoku",
+    "title": "包容力",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\07_hoyoryoku_ranking.png",
+    "ranking": [
+      "1位 毛布をかける守り人",
+      "2位 陽だまりを分ける人",
+      "3位 ひなたの愛され人",
+      "4位 雨宿りの待ち人",
+      "5位 静かな港の相棒"
+    ]
+  },
+  {
+    "id": "08_ichizu",
+    "title": "一途さ",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\08_ichizu_ranking.png",
+    "ranking": [
+      "1位 胸奥のロマン",
+      "2位 雨宿りの待ち人",
+      "3位 静かな港の相棒",
+      "4位 秘密の星",
+      "5位 静かな灯"
+    ]
+  },
+  {
+    "id": "09_romantic",
+    "title": "ロマンチック",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\09_romantic_ranking.png",
+    "ranking": [
+      "1位 夜風のロマンチスト",
+      "2位 月影のミューズ",
+      "3位 花束の主人公",
+      "4位 胸奥のロマン",
+      "5位 秘密の星"
+    ]
+  },
+  {
+    "id": "10_shizentai",
+    "title": "自然体",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\10_shizentai_ranking.png",
+    "ranking": [
+      "1位 ひなたの愛され人",
+      "2位 晴れ間の本命",
+      "3位 毛布をかける守り人",
+      "4位 静かな港の相棒",
+      "5位 余白を飾る演出家"
+    ]
+  },
+  {
+    "id": "11_sense",
+    "title": "センス",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\11_sense_ranking.png",
+    "ranking": [
+      "1位 余白を飾る演出家",
+      "2位 風まかせの小悪魔",
+      "3位 花束の主人公",
+      "4位 夜風のロマンチスト",
+      "5位 月影のミューズ"
+    ]
+  },
+  {
+    "id": "12_jiyu",
+    "title": "自由度",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\12_jiyu_ranking.png",
+    "ranking": [
+      "1位 地図を広げる冒険家",
+      "2位 風まかせの小悪魔",
+      "3位 余白を飾る演出家",
+      "4位 晴れ間の本命",
+      "5位 夜風のロマンチスト"
+    ]
+  },
+  {
+    "id": "13_sasae",
+    "title": "支え上手",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\13_sasae_ranking.png",
+    "ranking": [
+      "1位 毛布をかける守り人",
+      "2位 恋に旗を振る人",
+      "3位 陽だまりを分ける人",
+      "4位 静かな灯",
+      "5位 静かな港の相棒"
+    ]
+  },
+  {
+    "id": "14_numarase",
+    "title": "沼らせ力",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\14_numarase_ranking.png",
+    "ranking": [
+      "1位 月影のミューズ",
+      "2位 夜風のロマンチスト",
+      "3位 秘密の星",
+      "4位 風まかせの小悪魔",
+      "5位 花束の主人公"
+    ]
+  },
+  {
+    "id": "15_nagatsuduki",
+    "title": "長続き",
+    "out": "C:\\Users\\harui\\OneDrive\\ドキュメント\\mobby\\mobbyfork\\docs\\16renai\\assets\\tiktok\\15_nagatsuduki_ranking.png",
+    "ranking": [
+      "1位 静かな港の相棒",
+      "2位 静かな灯",
+      "3位 晴れ間の本命",
+      "4位 毛布をかける守り人",
+      "5位 雨宿りの待ち人"
+    ]
+  }
+]
