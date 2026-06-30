@@ -648,6 +648,30 @@
       backdrop-filter: blur(16px);
     }
 
+    .love-question-image {
+      margin: 2px 0 4px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: rgba(255, 247, 241, .8);
+      box-shadow: 0 12px 28px rgba(122, 78, 64, .12);
+    }
+
+    .love-question-image img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-height: 360px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media (max-width: 520px) {
+      .love-question-image img {
+        aspect-ratio: 4 / 3;
+        max-height: 260px;
+      }
+    }
+
     .love-diagnosis__nav {
       gap: 8px;
       max-width: 280px;
