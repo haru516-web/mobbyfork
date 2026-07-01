@@ -7181,6 +7181,60 @@
       color: rgba(47, 42, 36, 0.86);
     }
 
+    .hero-ehon-column {
+      box-sizing: border-box;
+      width: min(420px, calc(100% - 48px));
+      margin: 14px auto 10px;
+      padding: 12px;
+      position: relative;
+      z-index: 19;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: inherit;
+      text-decoration: none;
+      border: 1px solid rgba(237, 126, 57, 0.22);
+      border-radius: 28px;
+      background: rgba(255, 248, 239, 0.78);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.72),
+        0 14px 28px rgba(91, 67, 42, 0.08);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .hero-ehon-column:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.72),
+        0 18px 34px rgba(91, 67, 42, 0.12);
+    }
+
+    .hero-ehon-title {
+      margin: 0;
+      padding: 15px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fff7ea, #ffe5d6);
+      color: #5d3b20;
+      font-size: 1.02rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      line-height: 1.25;
+      text-align: center;
+      box-shadow:
+        inset 0 1px rgba(255, 255, 255, 0.82),
+        0 12px 24px rgba(237, 126, 57, 0.16);
+    }
+
+    .hero-ehon-text {
+      margin: 0;
+      color: rgba(47, 42, 36, 0.78);
+      font-size: 0.82rem;
+      font-weight: 800;
+      line-height: 1.6;
+      letter-spacing: 0.03em;
+      text-align: center;
+    }
+
     #diagnosisPopup .popup-content {
       width: min(900px, calc(100vw - 28px));
       max-height: min(86vh, 720px);
@@ -7703,6 +7757,23 @@
 
       .hero-diagnosis-caption .caption-detail {
         max-width: 24em;
+      }
+
+      .hero-ehon-column {
+        width: calc(100vw - 34px);
+        max-width: 340px;
+        margin-top: 12px;
+        padding: 10px;
+        border-radius: 24px;
+      }
+
+      .hero-ehon-title {
+        padding: 13px 16px;
+        font-size: 0.92rem;
+      }
+
+      .hero-ehon-text {
+        font-size: 0.72rem;
       }
 
       #diagnosisPopup .popup-content {
@@ -9024,6 +9095,10 @@
               <span class="caption-detail">一目で伝わる、持ち歩けるキャラクターにする。それがモビー診断です。</span>
             </p>
           </div>
+          <a class="hero-ehon-column" id="goEhonPage" href="ehon/index.html" aria-label="絵本を見る">
+            <span class="hero-ehon-title">絵本を見る</span>
+            <span class="hero-ehon-text">タップすると、絵本ページを縦スクロールで読めます。</span>
+          </a>
         </div>
       </section>
     </div>
@@ -11874,6 +11949,10 @@
       e.stopPropagation();
     });
     document.getElementById('goMobbyDiagnosis')?.addEventListener('click', () => openPopup('diagnosisPopup'));
+    document.getElementById('goEhonPage')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'ehon/index.html';
+    });
     const diagnosisLauncher = document.getElementById('openPricePopup');
     if (diagnosisLauncher && diagnosisLauncher.children.length === 0) diagnosisLauncher.textContent = '診断';
     document.addEventListener('click', (e) => {
