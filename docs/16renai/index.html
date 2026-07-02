@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>恋愛モビー診断</title>
-  <script type="module" crossorigin src="./assets/loveDiagnosis-PO37z9df.js?v=7"></script>
+  <script type="module" crossorigin src="./assets/loveDiagnosis-PO37z9df.js?v=13"></script>
   <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="./assets/loveMobbyDiagnosis-DTWGxZc_.js?v=7">
+  <link rel="modulepreload" crossorigin href="./assets/loveMobbyDiagnosis-DTWGxZc_.js?v=13">
   <link rel="stylesheet" crossorigin href="./assets/magazine-vH_rC7n8.css">
   <link rel="stylesheet" href="./assets/loveMobbyFortune.css?v=9">
   <script defer src="./assets/loveMobbyDailyFortunes31.js?v=2"></script>
@@ -1446,6 +1446,182 @@
       letter-spacing: .1em !important;
     }
 
+    .love-guide-select {
+      text-align: center;
+    }
+
+    .love-guide-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      width: 100%;
+      margin-top: 18px;
+    }
+
+    .love-guide-card {
+      display: grid;
+      min-height: 176px;
+      padding: 12px 10px;
+      gap: 7px;
+      justify-items: center;
+      border: 1px solid rgba(226, 61, 117, .16);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .84);
+      box-shadow: 0 14px 30px rgba(118, 86, 70, .10);
+      color: #3f2d32;
+    }
+
+    .love-guide-card img {
+      width: 100%;
+      height: 112px;
+      object-fit: contain;
+    }
+
+    .love-guide-card span {
+      font-weight: 900;
+    }
+
+    .love-guide-card small {
+      color: rgba(63, 45, 50, .68);
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .love-chat-thread,
+    .love-result-dialogue {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 8px;
+    }
+
+    .love-chat-thread {
+      max-height: min(56vh, 520px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding-right: 4px;
+      scroll-behavior: smooth;
+    }
+
+    .love-chat-row {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 8px;
+      align-items: end;
+    }
+
+    .love-chat-row--delayed {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: love-chat-pop .24s ease forwards;
+      animation-delay: var(--love-chat-delay, 0ms);
+    }
+
+    @keyframes love-chat-pop {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .love-chat-row img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      align-self: end;
+    }
+
+    .love-chat-bubble {
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .88);
+      box-shadow: 0 12px 28px rgba(118, 86, 70, .10);
+    }
+
+    .love-chat-bubble strong {
+      display: block;
+      margin-bottom: 3px;
+      color: #e23d75;
+      font-size: 11px;
+    }
+
+    .love-chat-bubble p {
+      margin: 0;
+      color: #3f2d32;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .love-chat-row--user {
+      grid-template-columns: minmax(0, 1fr) 44px;
+    }
+
+    .love-chat-row--user .love-chat-bubble {
+      grid-column: 1;
+      justify-self: end;
+      max-width: min(82%, 320px);
+      border-color: rgba(226, 61, 117, .16);
+      background: #ffeaf3;
+    }
+
+    .love-chat-row--user::after {
+      content: "";
+      grid-column: 2;
+      width: 44px;
+      height: 44px;
+    }
+
+    .love-question-list--chat .love-question {
+      gap: 10px;
+    }
+
+    .love-question-list--chat .love-question h3 {
+      display: none;
+    }
+
+    .love-question-image {
+      display: none !important;
+    }
+
+    .love-result-dialogue {
+      margin: 10px 0 14px;
+    }
+
+    .love-result-dialogue .love-chat-row--type {
+      grid-template-columns: minmax(0, 1fr) 54px;
+    }
+
+    .love-result-dialogue .love-chat-row--type img {
+      grid-column: 2;
+      grid-row: 1;
+      width: 54px;
+      height: 54px;
+    }
+
+    .love-result-dialogue .love-chat-row--type .love-chat-bubble {
+      grid-column: 1;
+      grid-row: 1;
+      background: rgba(255, 255, 255, .9);
+    }
+
+    @media (max-width: 520px) {
+      .love-guide-grid {
+        gap: 9px;
+      }
+
+      .love-guide-card {
+        min-height: 150px;
+        padding: 10px 8px;
+      }
+
+      .love-guide-card img {
+        height: 96px;
+      }
+    }
+
   </style>
   <link rel="stylesheet" href="../glassmorphism.css">
 </head>
@@ -1477,11 +1653,11 @@
         if (!hero || hero.dataset.renaiIntroReady === "true") return;
         hero.dataset.renaiIntroReady = "true";
         hero.innerHTML = `
-          <div class="love-intro-ornament" aria-hidden="true">❤︎ ❤ ❤︎</div>
+          <div class="love-intro-ornament" aria-hidden="true">♡・・♡ ♡・・</div>
           <p class="love-diagnosis__eyebrow">・ 恋愛モビー診断 ・</p>
-          <h3>あなたの恋愛タイプを<br><strong>4つの軸</strong>で診断します。</h3>
-          <div class="love-intro-divider" aria-hidden="true">❤</div>
-          <p>直感で選ぶ40問の質問から、あなたの恋愛タイプを16種類から診断します。</p>
+          <h3>あなたの推しモビーを<br><strong>選んでね</strong></h3>
+          <div class="love-intro-divider" aria-hidden="true">♡</div>
+          <p>選んだモビーが、あなたの恋の本音をチャット形式で案内します。</p>
         `;
       };
 
@@ -1520,3 +1696,9 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
