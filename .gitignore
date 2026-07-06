@@ -2,3 +2,4 @@ docs/reference/
 docs/**/node_modules/
 docs/**/dist/
 .vercel
+server-*.log
