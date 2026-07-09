@@ -1,0 +1,107 @@
+﻿[
+    {
+        "index":  1,
+        "title":  "韓国アイドル風メイクに合うランキング",
+        "layout":  "top3",
+        "code":  "simple-korean-ranking-01-code.png",
+        "prompt":  "simple-korean-ranking-01-prompt.txt"
+    },
+    {
+        "index":  2,
+        "title":  "大人になって垢抜けるランキング",
+        "layout":  "simple",
+        "code":  "simple-korean-ranking-02-code.png",
+        "prompt":  "simple-korean-ranking-02-prompt.txt"
+    },
+    {
+        "index":  3,
+        "title":  "韓国でモテるランキング",
+        "layout":  "split",
+        "code":  "simple-korean-ranking-03-code.png",
+        "prompt":  "simple-korean-ranking-03-prompt.txt"
+    },
+    {
+        "index":  4,
+        "title":  "写真映えする透明感ランキング",
+        "layout":  "top3",
+        "code":  "simple-korean-ranking-04-code.png",
+        "prompt":  "simple-korean-ranking-04-prompt.txt"
+    },
+    {
+        "index":  5,
+        "title":  "デート前に真似したいメイクランキング",
+        "layout":  "simple",
+        "code":  "simple-korean-ranking-05-code.png",
+        "prompt":  "simple-korean-ranking-05-prompt.txt"
+    },
+    {
+        "index":  6,
+        "title":  "美容感度が高そうランキング",
+        "layout":  "split",
+        "code":  "simple-korean-ranking-06-code.png",
+        "prompt":  "simple-korean-ranking-06-prompt.txt"
+    },
+    {
+        "index":  7,
+        "title":  "韓ドラヒロイン感ランキング",
+        "layout":  "top3",
+        "code":  "simple-korean-ranking-07-code.png",
+        "prompt":  "simple-korean-ranking-07-prompt.txt"
+    },
+    {
+        "index":  8,
+        "title":  "清楚なのに印象に残るランキング",
+        "layout":  "simple",
+        "code":  "simple-korean-ranking-08-code.png",
+        "prompt":  "simple-korean-ranking-08-prompt.txt"
+    },
+    {
+        "index":  9,
+        "title":  "韓国旅行で一緒に歩きたいランキング",
+        "layout":  "split",
+        "code":  "simple-korean-ranking-09-code.png",
+        "prompt":  "simple-korean-ranking-09-prompt.txt"
+    },
+    {
+        "index":  10,
+        "title":  "美容垢でバズりそうランキング",
+        "layout":  "top3",
+        "code":  "simple-korean-ranking-10-code.png",
+        "prompt":  "simple-korean-ranking-10-prompt.txt"
+    },
+    {
+        "index":  11,
+        "title":  "肌がきれいそうランキング",
+        "layout":  "simple",
+        "code":  "simple-korean-ranking-11-code.png",
+        "prompt":  "simple-korean-ranking-11-prompt.txt"
+    },
+    {
+        "index":  12,
+        "title":  "リップが似合いそうランキング",
+        "layout":  "split",
+        "code":  "simple-korean-ranking-12-code.png",
+        "prompt":  "simple-korean-ranking-12-prompt.txt"
+    },
+    {
+        "index":  13,
+        "title":  "涙袋メイクが映えるランキング",
+        "layout":  "top3",
+        "code":  "simple-korean-ranking-13-code.png",
+        "prompt":  "simple-korean-ranking-13-prompt.txt"
+    },
+    {
+        "index":  14,
+        "title":  "韓国オンニ感ランキング",
+        "layout":  "simple",
+        "code":  "simple-korean-ranking-14-code.png",
+        "prompt":  "simple-korean-ranking-14-prompt.txt"
+    },
+    {
+        "index":  15,
+        "title":  "一緒に美容課金したいランキング",
+        "layout":  "split",
+        "code":  "simple-korean-ranking-15-code.png",
+        "prompt":  "simple-korean-ranking-15-prompt.txt"
+    }
+]

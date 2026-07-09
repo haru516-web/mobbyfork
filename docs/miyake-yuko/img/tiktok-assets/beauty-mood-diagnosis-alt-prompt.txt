@@ -1,0 +1,8 @@
+Use case: infographic-diagram
+Asset type: TikTok / social post, 1080x1500
+Primary request: regenerate a polished Japanese Beauty Mood diagnosis infographic based on the deterministic code image.
+Title text must be exactly: ビューティムード診断
+Use only three axes from docs/miyake-yuko: A 美容設計 つ=積み重ね / わ=渡韓アップデート, B 印象ムード と=透明感 / ぐ=グロウ, C 届け方 じ=自分軸 / し=シェア提案.
+Use K-beauty Mobby character imagery inspired by docs/miyake-yuko/img/8mobby-toka.
+Keep all text minimal, legible, and exact. Warm cream/pink background, rounded cards, clean social infographic style.
+Avoid extra title text, avoid Roman letter axis codes as primary choices, avoid changing hiragana choices.

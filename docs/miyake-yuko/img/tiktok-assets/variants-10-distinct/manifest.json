@@ -1,0 +1,62 @@
+﻿[
+    {
+        "index":  1,
+        "name":  "sticker-party",
+        "code":  "beauty-mood-distinct-01-code.png",
+        "prompt":  "beauty-mood-distinct-01-prompt.txt"
+    },
+    {
+        "index":  2,
+        "name":  "scrapbook-polaroid",
+        "code":  "beauty-mood-distinct-02-code.png",
+        "prompt":  "beauty-mood-distinct-02-prompt.txt"
+    },
+    {
+        "index":  3,
+        "name":  "chat-bubbles",
+        "code":  "beauty-mood-distinct-03-code.png",
+        "prompt":  "beauty-mood-distinct-03-prompt.txt"
+    },
+    {
+        "index":  4,
+        "name":  "cosme-shelf",
+        "code":  "beauty-mood-distinct-04-code.png",
+        "prompt":  "beauty-mood-distinct-04-prompt.txt"
+    },
+    {
+        "index":  5,
+        "name":  "game-board",
+        "code":  "beauty-mood-distinct-05-code.png",
+        "prompt":  "beauty-mood-distinct-05-prompt.txt"
+    },
+    {
+        "index":  6,
+        "name":  "magazine-cover",
+        "code":  "beauty-mood-distinct-06-code.png",
+        "prompt":  "beauty-mood-distinct-06-prompt.txt"
+    },
+    {
+        "index":  7,
+        "name":  "ticket-strips",
+        "code":  "beauty-mood-distinct-07-code.png",
+        "prompt":  "beauty-mood-distinct-07-prompt.txt"
+    },
+    {
+        "index":  8,
+        "name":  "orbit-map",
+        "code":  "beauty-mood-distinct-08-code.png",
+        "prompt":  "beauty-mood-distinct-08-prompt.txt"
+    },
+    {
+        "index":  9,
+        "name":  "compact-cards",
+        "code":  "beauty-mood-distinct-09-code.png",
+        "prompt":  "beauty-mood-distinct-09-prompt.txt"
+    },
+    {
+        "index":  10,
+        "name":  "character-stage",
+        "code":  "beauty-mood-distinct-10-code.png",
+        "prompt":  "beauty-mood-distinct-10-prompt.txt"
+    }
+]

@@ -1,0 +1,8 @@
+Use case: infographic-diagram
+Asset type: TikTok/social post, 1080x1500
+Design variant: yellow-strip
+Create a polished alternate Japanese Beauty Mood diagnosis infographic. Top title must be exactly 「ビューティムード診断」 only.
+Use three axes only: つ=積み重ね / わ=渡韓アップデート, と=透明感 / ぐ=グロウ, じ=自分軸 / し=シェア提案.
+No bottom 8-type list. Show only the three axis choices and a small closing note.
+Use K-beauty Mobby character imagery inspired by docs/miyake-yuko/img/8mobby-toka.
+Do not use Roman letters as choice codes. Do not add a fourth axis. No watermark.

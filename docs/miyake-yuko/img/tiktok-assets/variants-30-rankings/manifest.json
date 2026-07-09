@@ -1,0 +1,212 @@
+﻿[
+    {
+        "index":  1,
+        "title":  "韓国アイドル風メイクに合うランキング",
+        "layout":  "pyramid",
+        "code":  "beauty-ranking-01-code.png",
+        "prompt":  "beauty-ranking-01-prompt.txt"
+    },
+    {
+        "index":  2,
+        "title":  "大人になって垢抜けるランキング",
+        "layout":  "zigzag",
+        "code":  "beauty-ranking-02-code.png",
+        "prompt":  "beauty-ranking-02-prompt.txt"
+    },
+    {
+        "index":  3,
+        "title":  "韓国でモテるランキング",
+        "layout":  "phone",
+        "code":  "beauty-ranking-03-code.png",
+        "prompt":  "beauty-ranking-03-prompt.txt"
+    },
+    {
+        "index":  4,
+        "title":  "すっぴん風でも盛れるランキング",
+        "layout":  "standard",
+        "code":  "beauty-ranking-04-code.png",
+        "prompt":  "beauty-ranking-04-prompt.txt"
+    },
+    {
+        "index":  5,
+        "title":  "韓国カフェで声をかけられそうランキング",
+        "layout":  "shelf",
+        "code":  "beauty-ranking-05-code.png",
+        "prompt":  "beauty-ranking-05-prompt.txt"
+    },
+    {
+        "index":  6,
+        "title":  "写真映えする透明感ランキング",
+        "layout":  "map",
+        "code":  "beauty-ranking-06-code.png",
+        "prompt":  "beauty-ranking-06-prompt.txt"
+    },
+    {
+        "index":  7,
+        "title":  "デート前に真似したいメイクランキング",
+        "layout":  "standard",
+        "code":  "beauty-ranking-07-code.png",
+        "prompt":  "beauty-ranking-07-prompt.txt"
+    },
+    {
+        "index":  8,
+        "title":  "美容感度が高そうランキング",
+        "layout":  "phone",
+        "code":  "beauty-ranking-08-code.png",
+        "prompt":  "beauty-ranking-08-prompt.txt"
+    },
+    {
+        "index":  9,
+        "title":  "第一印象で憧れられるランキング",
+        "layout":  "pyramid",
+        "code":  "beauty-ranking-09-code.png",
+        "prompt":  "beauty-ranking-09-prompt.txt"
+    },
+    {
+        "index":  10,
+        "title":  "韓ドラヒロイン感ランキング",
+        "layout":  "zigzag",
+        "code":  "beauty-ranking-10-code.png",
+        "prompt":  "beauty-ranking-10-prompt.txt"
+    },
+    {
+        "index":  11,
+        "title":  "垢抜け前後で化けるランキング",
+        "layout":  "standard",
+        "code":  "beauty-ranking-11-code.png",
+        "prompt":  "beauty-ranking-11-prompt.txt"
+    },
+    {
+        "index":  12,
+        "title":  "清楚なのに印象に残るランキング",
+        "layout":  "map",
+        "code":  "beauty-ranking-12-code.png",
+        "prompt":  "beauty-ranking-12-prompt.txt"
+    },
+    {
+        "index":  13,
+        "title":  "友達におすすめしたくなるランキング",
+        "layout":  "phone",
+        "code":  "beauty-ranking-13-code.png",
+        "prompt":  "beauty-ranking-13-prompt.txt"
+    },
+    {
+        "index":  14,
+        "title":  "韓国旅行で一緒に歩きたいランキング",
+        "layout":  "zigzag",
+        "code":  "beauty-ranking-14-code.png",
+        "prompt":  "beauty-ranking-14-prompt.txt"
+    },
+    {
+        "index":  15,
+        "title":  "美容垢でバズりそうランキング",
+        "layout":  "phone",
+        "code":  "beauty-ranking-15-code.png",
+        "prompt":  "beauty-ranking-15-prompt.txt"
+    },
+    {
+        "index":  16,
+        "title":  "肌がきれいそうランキング",
+        "layout":  "standard",
+        "code":  "beauty-ranking-16-code.png",
+        "prompt":  "beauty-ranking-16-prompt.txt"
+    },
+    {
+        "index":  17,
+        "title":  "香水が似合いそうランキング",
+        "layout":  "pyramid",
+        "code":  "beauty-ranking-17-code.png",
+        "prompt":  "beauty-ranking-17-prompt.txt"
+    },
+    {
+        "index":  18,
+        "title":  "先輩女子に憧れられそうランキング",
+        "layout":  "standard",
+        "code":  "beauty-ranking-18-code.png",
+        "prompt":  "beauty-ranking-18-prompt.txt"
+    },
+    {
+        "index":  19,
+        "title":  "彼女感が強いランキング",
+        "layout":  "shelf",
+        "code":  "beauty-ranking-19-code.png",
+        "prompt":  "beauty-ranking-19-prompt.txt"
+    },
+    {
+        "index":  20,
+        "title":  "韓国制服アレンジが似合うランキング",
+        "layout":  "zigzag",
+        "code":  "beauty-ranking-20-code.png",
+        "prompt":  "beauty-ranking-20-prompt.txt"
+    },
+    {
+        "index":  21,
+        "title":  "ナチュラルメイクで勝てるランキング",
+        "layout":  "standard",
+        "code":  "beauty-ranking-21-code.png",
+        "prompt":  "beauty-ranking-21-prompt.txt"
+    },
+    {
+        "index":  22,
+        "title":  "美容室でオーダーされそうランキング",
+        "layout":  "phone",
+        "code":  "beauty-ranking-22-code.png",
+        "prompt":  "beauty-ranking-22-prompt.txt"
+    },
+    {
+        "index":  23,
+        "title":  "休日のソウル散歩が似合うランキング",
+        "layout":  "map",
+        "code":  "beauty-ranking-23-code.png",
+        "prompt":  "beauty-ranking-23-prompt.txt"
+    },
+    {
+        "index":  24,
+        "title":  "韓国メイク初心者が真似しやすいランキング",
+        "layout":  "standard",
+        "code":  "beauty-ranking-24-code.png",
+        "prompt":  "beauty-ranking-24-prompt.txt"
+    },
+    {
+        "index":  25,
+        "title":  "韓国コスメ売り場で目を引くランキング",
+        "layout":  "shelf",
+        "code":  "beauty-ranking-25-code.png",
+        "prompt":  "beauty-ranking-25-prompt.txt"
+    },
+    {
+        "index":  26,
+        "title":  "リップが似合いそうランキング",
+        "layout":  "standard",
+        "code":  "beauty-ranking-26-code.png",
+        "prompt":  "beauty-ranking-26-prompt.txt"
+    },
+    {
+        "index":  27,
+        "title":  "涙袋メイクが映えるランキング",
+        "layout":  "phone",
+        "code":  "beauty-ranking-27-code.png",
+        "prompt":  "beauty-ranking-27-prompt.txt"
+    },
+    {
+        "index":  28,
+        "title":  "韓国オンニ感ランキング",
+        "layout":  "pyramid",
+        "code":  "beauty-ranking-28-code.png",
+        "prompt":  "beauty-ranking-28-prompt.txt"
+    },
+    {
+        "index":  29,
+        "title":  "韓国前髪アレンジが似合うランキング",
+        "layout":  "zigzag",
+        "code":  "beauty-ranking-29-code.png",
+        "prompt":  "beauty-ranking-29-prompt.txt"
+    },
+    {
+        "index":  30,
+        "title":  "一緒に美容課金したいランキング",
+        "layout":  "shelf",
+        "code":  "beauty-ranking-30-code.png",
+        "prompt":  "beauty-ranking-30-prompt.txt"
+    }
+]
