@@ -30,6 +30,27 @@ function Get-Font {
   return [Drawing.Font]::new([Drawing.FontFamily]::GenericSansSerif, $Size, $Style, [Drawing.GraphicsUnit]::Pixel)
 }
 
+function Get-FittingFont {
+  param(
+    [Drawing.Graphics]$Graphics,
+    [string]$Text,
+    [string[]]$Families,
+    [float]$StartSize,
+    [float]$MinSize,
+    [float]$MaxWidth,
+    [Drawing.FontStyle]$Style
+  )
+  for ($size = $StartSize; $size -ge $MinSize; $size -= 4) {
+    $font = Get-Font -Families $Families -Size $size -Style $Style
+    $measured = $Graphics.MeasureString($Text, $font)
+    if ($measured.Width -le $MaxWidth) {
+      return $font
+    }
+    $font.Dispose()
+  }
+  return Get-Font -Families $Families -Size $MinSize -Style $Style
+}
+
 function Save-Jpeg {
   param([Drawing.Bitmap]$Bitmap, [string]$Path, [long]$Quality = 94)
   $dir = Split-Path -Parent $Path
@@ -69,13 +90,14 @@ $items = @(
 $canvasW = 2480
 $canvasH = 3508
 $cream = [Drawing.ColorTranslator]::FromHtml('#fff5e7')
-$ink = [Drawing.ColorTranslator]::FromHtml('#24324a')
-$sub = [Drawing.ColorTranslator]::FromHtml('#806f69')
-$fontFamilies = @('Yu Gothic UI', 'Meiryo', 'Yu Gothic', 'MS Gothic')
+$panelCream = [Drawing.ColorTranslator]::FromHtml('#fff8ee')
+$ink = [Drawing.ColorTranslator]::FromHtml('#26334f')
+$sub = [Drawing.ColorTranslator]::FromHtml('#7d6b68')
+$titleFamilies = @('HG丸ｺﾞｼｯｸM-PRO', 'Noto Sans JP Medium', 'UD デジタル 教科書体 NP', 'Yu Gothic UI Semibold', 'Meiryo')
+$accentFamilies = @('UD デジタル 教科書体 NP', 'HGP教科書体', 'Noto Serif JP Medium', 'Yu Gothic UI', 'Meiryo')
 
-$titleFont = Get-Font -Families $fontFamilies -Size 118 -Style ([Drawing.FontStyle]::Bold)
-$codeFont = Get-Font -Families $fontFamilies -Size 64 -Style ([Drawing.FontStyle]::Regular)
-$smallFont = Get-Font -Families $fontFamilies -Size 46 -Style ([Drawing.FontStyle]::Regular)
+$codeFont = Get-Font -Families $accentFamilies -Size 70 -Style ([Drawing.FontStyle]::Regular)
+$smallFont = Get-Font -Families $accentFamilies -Size 48 -Style ([Drawing.FontStyle]::Regular)
 
 foreach ($item in $items) {
   $srcPath = Join-Path $sourceDir $item.File
@@ -101,40 +123,50 @@ foreach ($item in $items) {
       $dest = [Drawing.Rectangle]::new($targetX, $targetY, $targetW, $targetH)
       $g.DrawImage($src, $dest, $crop, [Drawing.GraphicsUnit]::Pixel)
 
-      $panelW = 1240
-      $panelH = 470
+      $panelW = 1520
+      $panelH = 700
       $panelX = [int](($canvasW - $panelW) / 2)
-      $panelY = [int]($targetY + ($targetH * 0.44))
-      $shadowPath = New-RoundedRectanglePath -X ($panelX + 18) -Y ($panelY + 22) -Width $panelW -Height $panelH -Radius 46
-      $shadowBrush = [Drawing.SolidBrush]::new([Drawing.Color]::FromArgb(70, 49, 39, 58))
+      $panelY = [int]($targetY + ($targetH * 0.365))
+      $shadowPath = New-RoundedRectanglePath -X ($panelX + 24) -Y ($panelY + 30) -Width $panelW -Height $panelH -Radius 70
+      $shadowBrush = [Drawing.SolidBrush]::new([Drawing.Color]::FromArgb(54, 67, 52, 67))
       $g.FillPath($shadowBrush, $shadowPath)
       $shadowBrush.Dispose()
       $shadowPath.Dispose()
 
-      $panelPath = New-RoundedRectanglePath -X $panelX -Y $panelY -Width $panelW -Height $panelH -Radius 46
-      $panelBrush = [Drawing.SolidBrush]::new([Drawing.Color]::FromArgb(236, $cream.R, $cream.G, $cream.B))
+      $panelPath = New-RoundedRectanglePath -X $panelX -Y $panelY -Width $panelW -Height $panelH -Radius 70
+      $panelBrush = [Drawing.SolidBrush]::new($panelCream)
       $g.FillPath($panelBrush, $panelPath)
       $panelBrush.Dispose()
-      $pen = [Drawing.Pen]::new($item.Accent, 8)
+      $pen = [Drawing.Pen]::new([Drawing.Color]::FromArgb(210, $item.Accent.R, $item.Accent.G, $item.Accent.B), 6)
       $g.DrawPath($pen, $panelPath)
       $pen.Dispose()
       $panelPath.Dispose()
 
+      $dotBrush = [Drawing.SolidBrush]::new([Drawing.Color]::FromArgb(88, $item.Accent.R, $item.Accent.G, $item.Accent.B))
+      $g.FillEllipse($dotBrush, $panelX + 82, $panelY + 92, 20, 20)
+      $g.FillEllipse($dotBrush, $panelX + $panelW - 102, $panelY + $panelH - 112, 20, 20)
+      $dotBrush.Dispose()
+
       $sf = [Drawing.StringFormat]::new()
       $sf.Alignment = [Drawing.StringAlignment]::Center
       $sf.LineAlignment = [Drawing.StringAlignment]::Center
+      $sf.FormatFlags = [Drawing.StringFormatFlags]::NoClip
       $accentBrush = [Drawing.SolidBrush]::new($item.Accent)
       $inkBrush = [Drawing.SolidBrush]::new($ink)
       $subBrush = [Drawing.SolidBrush]::new($sub)
 
-      $g.DrawString($item.Source, $smallFont, $accentBrush, [Drawing.RectangleF]::new($panelX, $panelY + 42, $panelW, 70), $sf)
-      $g.DrawString($item.Type, $titleFont, $inkBrush, [Drawing.RectangleF]::new($panelX + 30, $panelY + 130, $panelW - 60, 150), $sf)
-      $g.DrawString(('(' + $item.Code + ')'), $codeFont, $subBrush, [Drawing.RectangleF]::new($panelX, $panelY + 288, $panelW, 88), $sf)
+      $titleFont = Get-FittingFont -Graphics $g -Text $item.Type -Families $titleFamilies -StartSize 112 -MinSize 86 -MaxWidth ($panelW - 190) -Style ([Drawing.FontStyle]::Regular)
+      $g.DrawString($item.Source, $smallFont, $accentBrush, [Drawing.RectangleF]::new($panelX, $panelY + 110, $panelW, 68), $sf)
+      $g.DrawString($item.Type, $titleFont, $inkBrush, [Drawing.RectangleF]::new($panelX + 90, $panelY + 220, $panelW - 180, 145), $sf)
+      $g.DrawString(('(' + $item.Code + ')'), $codeFont, $subBrush, [Drawing.RectangleF]::new($panelX, $panelY + 395, $panelW, 90), $sf)
 
-      $linePen = [Drawing.Pen]::new([Drawing.Color]::FromArgb(170, $item.Accent.R, $item.Accent.G, $item.Accent.B), 5)
-      $g.DrawLine($linePen, $panelX + 420, $panelY + 390, $panelX + 820, $panelY + 390)
+      $linePen = [Drawing.Pen]::new([Drawing.Color]::FromArgb(128, $item.Accent.R, $item.Accent.G, $item.Accent.B), 4)
+      $linePen.StartCap = [Drawing.Drawing2D.LineCap]::Round
+      $linePen.EndCap = [Drawing.Drawing2D.LineCap]::Round
+      $g.DrawLine($linePen, $panelX + 580, $panelY + 525, $panelX + 940, $panelY + 525)
       $linePen.Dispose()
 
+      $titleFont.Dispose()
       $accentBrush.Dispose()
       $inkBrush.Dispose()
       $subBrush.Dispose()
@@ -151,7 +183,6 @@ foreach ($item in $items) {
   }
 }
 
-$titleFont.Dispose()
 $codeFont.Dispose()
 $smallFont.Dispose()
 
