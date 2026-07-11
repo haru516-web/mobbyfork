@@ -77,20 +77,19 @@ $sourceDir = 'C:\Users\harui\.codex\codex-remote-attachments\019f5054-e3a5-7122-
 $outputDir = 'docs/miyake-yuko/img/tiktok-assets/face-type-mapping'
 
 $items = @(
-  @{ File='1-写真1.jpg'; Output='01-cool-korean-idol-mobby.jpg'; Source='クール'; Type='韓国アイドルモビー'; Code='わぐし'; CropY=190; CropH=790; Accent=[Drawing.ColorTranslator]::FromHtml('#7b86b8') },
-  @{ File='2-写真2.jpg'; Output='02-elegant-kdrama-actress-mobby.jpg'; Source='エレガント'; Type='韓ドラ女優モビー'; Code='わとじ'; CropY=166; CropH=787; Accent=[Drawing.ColorTranslator]::FromHtml('#b44a54') },
-  @{ File='3-写真3.jpg'; Output='03-soft-elegant-kdrama-actress-mobby.jpg'; Source='ソフトエレガント'; Type='韓ドラ女優モビー'; Code='わとじ'; CropY=164; CropH=786; Accent=[Drawing.ColorTranslator]::FromHtml('#8fb7c8') },
-  @{ File='4-写真4.jpg'; Output='04-fresh-clear-model-mobby.jpg'; Source='フレッシュ'; Type='透明感モデルモビー'; Code='つとじ'; CropY=170; CropH=784; Accent=[Drawing.ColorTranslator]::FromHtml('#89b69f') },
-  @{ File='5-写真5.jpg'; Output='05-cool-casual-korean-idol-mobby.jpg'; Source='クールカジュアル'; Type='韓国アイドルモビー'; Code='わぐし'; CropY=166; CropH=798; Accent=[Drawing.ColorTranslator]::FromHtml('#7891ac') },
-  @{ File='6-写真6.jpg'; Output='06-feminine-korean-idol-mobby.jpg'; Source='フェミニン'; Type='韓国アイドルモビー'; Code='わぐし'; CropY=166; CropH=786; Accent=[Drawing.ColorTranslator]::FromHtml('#c98fca') },
-  @{ File='7-写真7.jpg'; Output='07-active-cute-korean-idol-mobby.jpg'; Source='アクティブキュート'; Type='韓国アイドルモビー'; Code='わぐし'; CropY=185; CropH=790; Accent=[Drawing.ColorTranslator]::FromHtml('#eda676') },
-  @{ File='8-写真8.jpg'; Output='08-cute-korean-idol-mobby.jpg'; Source='キュート'; Type='韓国アイドルモビー'; Code='わぐし'; CropY=175; CropH=788; Accent=[Drawing.ColorTranslator]::FromHtml('#e7a5b8') }
+  @{ File='1-写真1.jpg'; Output='01-cool-korean-idol-mobby.jpg'; Source='クール'; Type='韓国アイドルモビー'; Code='わぐし'; CropY=190; CropH=790; BoxX=183; BoxY=505; BoxW=224; BoxH=212; Accent=[Drawing.ColorTranslator]::FromHtml('#263f74'); Fill=[Drawing.ColorTranslator]::FromHtml('#071d48') },
+  @{ File='2-写真2.jpg'; Output='02-elegant-kdrama-actress-mobby.jpg'; Source='エレガント'; Type='韓ドラ女優モビー'; Code='わとじ'; CropY=166; CropH=787; BoxX=184; BoxY=455; BoxW=222; BoxH=210; Accent=[Drawing.ColorTranslator]::FromHtml('#b44a54'); Fill=[Drawing.ColorTranslator]::FromHtml('#a50f15') },
+  @{ File='3-写真3.jpg'; Output='03-soft-elegant-kdrama-actress-mobby.jpg'; Source='ソフトエレガント'; Type='韓ドラ女優モビー'; Code='わとじ'; CropY=164; CropH=786; BoxX=180; BoxY=452; BoxW=230; BoxH=205; Accent=[Drawing.ColorTranslator]::FromHtml('#8fb7c8'); Fill=[Drawing.ColorTranslator]::FromHtml('#f8fbf8') },
+  @{ File='4-写真4.jpg'; Output='04-fresh-clear-model-mobby.jpg'; Source='フレッシュ'; Type='透明感モデルモビー'; Code='つとじ'; CropY=170; CropH=784; BoxX=184; BoxY=454; BoxW=222; BoxH=214; Accent=[Drawing.ColorTranslator]::FromHtml('#77a98f'); Fill=[Drawing.ColorTranslator]::FromHtml('#d9ebcf') },
+  @{ File='5-写真5.jpg'; Output='05-cool-casual-korean-idol-mobby.jpg'; Source='クールカジュアル'; Type='韓国アイドルモビー'; Code='わぐし'; CropY=166; CropH=798; BoxX=181; BoxY=450; BoxW=228; BoxH=214; Accent=[Drawing.ColorTranslator]::FromHtml('#7891ac'); Fill=[Drawing.ColorTranslator]::FromHtml('#b9cadd') },
+  @{ File='6-写真6.jpg'; Output='06-feminine-korean-idol-mobby.jpg'; Source='フェミニン'; Type='韓国アイドルモビー'; Code='わぐし'; CropY=166; CropH=786; BoxX=183; BoxY=457; BoxW=224; BoxH=209; Accent=[Drawing.ColorTranslator]::FromHtml('#c98fca'); Fill=[Drawing.ColorTranslator]::FromHtml('#dfc7f2') },
+  @{ File='7-写真7.jpg'; Output='07-active-cute-korean-idol-mobby.jpg'; Source='アクティブキュート'; Type='韓国アイドルモビー'; Code='わぐし'; CropY=185; CropH=790; BoxX=184; BoxY=493; BoxW=222; BoxH=214; Accent=[Drawing.ColorTranslator]::FromHtml('#eda676'); Fill=[Drawing.ColorTranslator]::FromHtml('#f3b58d') },
+  @{ File='8-写真8.jpg'; Output='08-cute-korean-idol-mobby.jpg'; Source='キュート'; Type='韓国アイドルモビー'; Code='わぐし'; CropY=175; CropH=788; BoxX=183; BoxY=461; BoxW=224; BoxH=214; Accent=[Drawing.ColorTranslator]::FromHtml('#e7a5b8'); Fill=[Drawing.ColorTranslator]::FromHtml('#f4c5d0') }
 )
 
 $canvasW = 2480
 $canvasH = 3508
 $cream = [Drawing.ColorTranslator]::FromHtml('#fff5e7')
-$panelCream = [Drawing.ColorTranslator]::FromHtml('#fff8ee')
 $ink = [Drawing.ColorTranslator]::FromHtml('#26334f')
 $sub = [Drawing.ColorTranslator]::FromHtml('#7d6b68')
 $titleFamilies = @('HG丸ｺﾞｼｯｸM-PRO', 'Noto Sans JP Medium', 'UD デジタル 教科書体 NP', 'Yu Gothic UI Semibold', 'Meiryo')
@@ -123,50 +122,63 @@ foreach ($item in $items) {
       $dest = [Drawing.Rectangle]::new($targetX, $targetY, $targetW, $targetH)
       $g.DrawImage($src, $dest, $crop, [Drawing.GraphicsUnit]::Pixel)
 
-      $panelW = 1520
-      $panelH = 700
-      $panelX = [int](($canvasW - $panelW) / 2)
-      $panelY = [int]($targetY + ($targetH * 0.365))
-      $shadowPath = New-RoundedRectanglePath -X ($panelX + 24) -Y ($panelY + 30) -Width $panelW -Height $panelH -Radius 70
+      $scale = [double]$targetW / $src.Width
+      $panelX = [int]($targetX + ([double]$item.BoxX * $scale))
+      $panelY = [int]($targetY + (([double]$item.BoxY - [double]$item.CropY) * $scale))
+      $panelW = [int]([double]$item.BoxW * $scale)
+      $panelH = [int]([double]$item.BoxH * $scale)
+      $radius = [float]([Math]::Max(38, $scale * 14))
+      $shadowPath = New-RoundedRectanglePath -X ($panelX + 16) -Y ($panelY + 20) -Width $panelW -Height $panelH -Radius $radius
       $shadowBrush = [Drawing.SolidBrush]::new([Drawing.Color]::FromArgb(54, 67, 52, 67))
       $g.FillPath($shadowBrush, $shadowPath)
       $shadowBrush.Dispose()
       $shadowPath.Dispose()
 
-      $panelPath = New-RoundedRectanglePath -X $panelX -Y $panelY -Width $panelW -Height $panelH -Radius 70
-      $panelBrush = [Drawing.SolidBrush]::new($panelCream)
+      $panelPath = New-RoundedRectanglePath -X $panelX -Y $panelY -Width $panelW -Height $panelH -Radius $radius
+      $panelBrush = [Drawing.SolidBrush]::new($item.Fill)
       $g.FillPath($panelBrush, $panelPath)
       $panelBrush.Dispose()
-      $pen = [Drawing.Pen]::new([Drawing.Color]::FromArgb(210, $item.Accent.R, $item.Accent.G, $item.Accent.B), 6)
+      $pen = [Drawing.Pen]::new([Drawing.Color]::FromArgb(235, $item.Accent.R, $item.Accent.G, $item.Accent.B), 5)
       $g.DrawPath($pen, $panelPath)
       $pen.Dispose()
       $panelPath.Dispose()
-
-      $dotBrush = [Drawing.SolidBrush]::new([Drawing.Color]::FromArgb(88, $item.Accent.R, $item.Accent.G, $item.Accent.B))
-      $g.FillEllipse($dotBrush, $panelX + 82, $panelY + 92, 20, 20)
-      $g.FillEllipse($dotBrush, $panelX + $panelW - 102, $panelY + $panelH - 112, 20, 20)
-      $dotBrush.Dispose()
 
       $sf = [Drawing.StringFormat]::new()
       $sf.Alignment = [Drawing.StringAlignment]::Center
       $sf.LineAlignment = [Drawing.StringAlignment]::Center
       $sf.FormatFlags = [Drawing.StringFormatFlags]::NoClip
-      $accentBrush = [Drawing.SolidBrush]::new($item.Accent)
-      $inkBrush = [Drawing.SolidBrush]::new($ink)
-      $subBrush = [Drawing.SolidBrush]::new($sub)
+      $darkPanel = (($item.Fill.R + $item.Fill.G + $item.Fill.B) -lt 280)
+      if ($darkPanel) {
+        $titleColor = [Drawing.ColorTranslator]::FromHtml('#fff8ee')
+        $subColor = [Drawing.ColorTranslator]::FromHtml('#f7dbe4')
+        $accentColor = [Drawing.ColorTranslator]::FromHtml('#f9c8d7')
+      } else {
+        $titleColor = $ink
+        $subColor = $sub
+        $accentColor = $item.Accent
+      }
+      $accentBrush = [Drawing.SolidBrush]::new($accentColor)
+      $inkBrush = [Drawing.SolidBrush]::new($titleColor)
+      $subBrush = [Drawing.SolidBrush]::new($subColor)
 
-      $titleFont = Get-FittingFont -Graphics $g -Text $item.Type -Families $titleFamilies -StartSize 112 -MinSize 86 -MaxWidth ($panelW - 190) -Style ([Drawing.FontStyle]::Regular)
-      $g.DrawString($item.Source, $smallFont, $accentBrush, [Drawing.RectangleF]::new($panelX, $panelY + 110, $panelW, 68), $sf)
-      $g.DrawString($item.Type, $titleFont, $inkBrush, [Drawing.RectangleF]::new($panelX + 90, $panelY + 220, $panelW - 180, 145), $sf)
-      $g.DrawString(('(' + $item.Code + ')'), $codeFont, $subBrush, [Drawing.RectangleF]::new($panelX, $panelY + 395, $panelW, 90), $sf)
+      $titleText = $item.Type -replace 'モビー$', "`nモビー"
+      $sourceFont = Get-Font -Families $accentFamilies -Size ([float]($panelH * 0.075)) -Style ([Drawing.FontStyle]::Regular)
+      $titleFont = Get-FittingFont -Graphics $g -Text $titleText -Families $titleFamilies -StartSize ([float]($panelH * 0.145)) -MinSize ([float]($panelH * 0.105)) -MaxWidth ($panelW - 90) -Style ([Drawing.FontStyle]::Regular)
+      $codePanelFont = Get-Font -Families $accentFamilies -Size ([float]($panelH * 0.082)) -Style ([Drawing.FontStyle]::Regular)
+      $g.DrawString($item.Source, $sourceFont, $accentBrush, [Drawing.RectangleF]::new($panelX + 24, $panelY + ($panelH * 0.10), $panelW - 48, $panelH * 0.12), $sf)
+      $g.DrawString($titleText, $titleFont, $inkBrush, [Drawing.RectangleF]::new($panelX + 38, $panelY + ($panelH * 0.24), $panelW - 76, $panelH * 0.40), $sf)
+      $g.DrawString(('(' + $item.Code + ')'), $codePanelFont, $subBrush, [Drawing.RectangleF]::new($panelX + 24, $panelY + ($panelH * 0.65), $panelW - 48, $panelH * 0.13), $sf)
 
-      $linePen = [Drawing.Pen]::new([Drawing.Color]::FromArgb(128, $item.Accent.R, $item.Accent.G, $item.Accent.B), 4)
+      $linePen = [Drawing.Pen]::new([Drawing.Color]::FromArgb(160, $accentColor.R, $accentColor.G, $accentColor.B), 4)
       $linePen.StartCap = [Drawing.Drawing2D.LineCap]::Round
       $linePen.EndCap = [Drawing.Drawing2D.LineCap]::Round
-      $g.DrawLine($linePen, $panelX + 580, $panelY + 525, $panelX + 940, $panelY + 525)
+      $lineY = [int]($panelY + ($panelH * 0.83))
+      $g.DrawLine($linePen, [int]($panelX + ($panelW * 0.34)), $lineY, [int]($panelX + ($panelW * 0.66)), $lineY)
       $linePen.Dispose()
 
+      $sourceFont.Dispose()
       $titleFont.Dispose()
+      $codePanelFont.Dispose()
       $accentBrush.Dispose()
       $inkBrush.Dispose()
       $subBrush.Dispose()
