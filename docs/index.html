@@ -3509,14 +3509,195 @@
       letter-spacing: 0.02em;
     }
 
-    .peek-heart-wrap {
-      display: flex;
-      justify-content: center;
-      margin: -8px 0 18px;
+    .manga-viewer-wrap {
+      width: min(760px, calc(100vw - 24px));
+      min-width: 0;
+      max-width: calc(100vw - 24px);
+      display: block;
+      margin: -8px auto 18px;
     }
 
-    .peek-heart-btn {
+    .hero-character-action.manga-launch-btn {
       z-index: 14;
+      flex-direction: column;
+      gap: 3px;
+      color: rgba(71, 63, 54, 0.86);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+
+    .manga-launch-icon,
+    .manga-launch-label {
+      position: relative;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .manga-launch-icon {
+      width: 22px;
+      height: 17px;
+      display: block;
+      line-height: 1;
+    }
+
+    .manga-launch-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .manga-launch-label {
+      white-space: nowrap;
+    }
+
+    .hero-character-action.manga-launch-btn[aria-expanded="true"] {
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.3));
+    }
+
+    .manga-inline {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      padding: 10px 0 4px;
+      display: block;
+      overflow: hidden;
+    }
+
+    .manga-inline[hidden] {
+      display: none !important;
+    }
+
+    .manga-panel {
+      position: relative;
+      width: min(100%, 760px);
+      min-width: 0;
+      max-width: 100%;
+      margin: 0 auto;
+      max-height: min(82vh, 920px);
+      overflow: hidden;
+      border: 1px solid rgba(152, 128, 104, 0.18);
+      border-radius: 22px;
+      background: #fffaf2;
+      box-shadow: 0 18px 38px rgba(75, 58, 45, 0.12);
+    }
+
+    .manga-panel-header {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      padding: 16px 56px 12px 18px;
+      border-bottom: 1px solid rgba(152, 128, 104, 0.14);
+      background: rgba(255, 250, 242, 0.96);
+      backdrop-filter: blur(10px);
+    }
+
+    .manga-panel-kicker {
+      margin: 0 0 2px;
+      color: rgba(95, 73, 58, 0.62);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .manga-panel-title {
+      margin: 0;
+      color: #3f2f24;
+      font-size: 1.08rem;
+      font-weight: 900;
+      line-height: 1.4;
+    }
+
+    .manga-panel-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 4;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(93, 59, 32, 0.2);
+      border-radius: 999px;
+      color: #5d3b20;
+      background: #fff;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .manga-episode-tabs {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      overscroll-behavior-x: contain;
+      scrollbar-width: thin;
+      background: #f8efe2;
+    }
+
+    .manga-episode-button {
+      flex: 0 0 auto;
+      min-width: 54px;
+      min-height: 38px;
+      padding: 7px 13px;
+      border: 1px solid rgba(93, 59, 32, 0.18);
+      border-radius: 999px;
+      color: #6a4c39;
+      background: rgba(255, 255, 255, 0.8);
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .manga-episode-button.is-active {
+      color: #fff;
+      border-color: #8b5e3c;
+      background: #8b5e3c;
+    }
+
+    .manga-pages {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      max-height: calc(min(82vh, 920px) - 126px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-gutter: stable;
+      background: #fff;
+    }
+
+    .manga-pages img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .manga-panel {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .manga-panel-header {
+        padding: 13px 50px 10px 14px;
+      }
+
+      .manga-panel-title {
+        font-size: 0.98rem;
+      }
+
+      .manga-episode-tabs {
+        padding: 10px 12px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -9020,6 +9201,324 @@
       }
     }
   </style>
+  <style>
+    /* Compact home dashboard: one-screen overview with consistent actions. */
+    .hero-home-actions {
+      box-sizing: border-box;
+      width: min(420px, calc(100% - 48px));
+      margin: 10px auto 14px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      position: relative;
+      z-index: 19;
+    }
+
+    .hero-home-action {
+      min-width: 0;
+      min-height: 72px;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid rgba(126, 86, 53, 0.2);
+      border-radius: 20px;
+      color: #4d4036;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 248, 239, 0.42));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 8px 18px rgba(91, 67, 42, 0.09);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .hero-home-action:hover {
+      transform: translateY(-2px);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 239, 0.58));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 12px 22px rgba(91, 67, 42, 0.13);
+    }
+
+    .hero-home-action-icon {
+      width: 25px;
+      height: 25px;
+      display: block;
+      color: #6c5240;
+    }
+
+    .hero-home-action-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .hero-home-action[data-home-action="poster"] .hero-home-action-icon {
+      color: #b65f2f;
+    }
+
+    .hero-home-action[data-home-action="gacha"] .hero-home-action-icon {
+      color: #b34f72;
+    }
+
+    .hero-home-action[data-home-action="ehon"] .hero-home-action-icon {
+      color: #527e83;
+    }
+
+    @media (max-width: 520px) {
+      .hero-intro {
+        min-height: 100svh;
+        padding: 0 0 12px;
+      }
+
+      .mobby-title {
+        padding-top: 8px !important;
+      }
+
+      .mobby-title img {
+        width: 128px !important;
+        margin: 0 auto -2px !important;
+      }
+
+      .hero-intro .headline {
+        margin: 0 auto !important;
+        padding: 0 12px !important;
+        font-size: 0.78rem !important;
+        line-height: 1.25 !important;
+      }
+
+      .hero-intro .hero {
+        padding-top: 0 !important;
+      }
+
+      .hero-intro .hero .container {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: none;
+        padding: 0 12px;
+      }
+
+      .hero-intro .hero-carousel-shell {
+        width: min(270px, 72vw) !important;
+        margin: -4px auto 0 !important;
+      }
+
+      .hero-intro .hero-model-carousel {
+        height: 245px !important;
+      }
+
+      .hero-character-row {
+        width: 260px !important;
+        margin: -28px auto 0 !important;
+        grid-template-columns: 48px minmax(0, 1fr) 48px !important;
+        gap: 8px !important;
+      }
+
+      .hero-character-action {
+        width: 48px !important;
+        height: 48px !important;
+        border-radius: 16px !important;
+      }
+
+      .hero-character-name {
+        font-size: 0.9rem !important;
+      }
+
+      .hero-diagnosis-launch-wrap {
+        width: min(400px, calc(100vw - 24px)) !important;
+        max-width: none !important;
+        margin: 8px auto 0 !important;
+        padding: 6px !important;
+        gap: 0 !important;
+        border-radius: 20px !important;
+      }
+
+      #goMobbyDiagnosis.hero-diagnosis-launch {
+        min-height: 48px !important;
+        padding: 0 16px !important;
+        font-size: 0.92rem !important;
+      }
+
+      .hero-home-actions {
+        width: min(400px, calc(100vw - 24px));
+        margin: 8px auto 10px;
+        gap: 8px;
+      }
+
+      .hero-home-action {
+        min-height: 62px;
+        padding: 8px 5px;
+        gap: 4px;
+        border-radius: 16px;
+        font-size: 0.7rem;
+      }
+
+      .hero-home-action-icon {
+        width: 21px;
+        height: 21px;
+      }
+    }
+  </style>
+  <style>
+    /* Keep the compact layout, but restore Mobby's warm handmade character. */
+    .hero-intro {
+      background:
+        radial-gradient(circle at 16% 20%, rgba(255, 188, 151, 0.2), transparent 24%),
+        radial-gradient(circle at 86% 28%, rgba(174, 213, 216, 0.18), transparent 24%),
+        radial-gradient(circle at 52% 72%, rgba(255, 211, 223, 0.16), transparent 28%),
+        #faf1e2;
+    }
+
+    .hero-intro .headline {
+      color: #5d3b20 !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+    }
+
+    .hero-home-action {
+      position: relative;
+      overflow: hidden;
+      border-width: 1.5px;
+      border-radius: 22px 15px 24px 16px / 16px 23px 15px 22px;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.82),
+        3px 4px 0 rgba(107, 77, 50, 0.08),
+        0 9px 18px rgba(91, 67, 42, 0.08);
+    }
+
+    .hero-home-action::before {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border: 1px dashed rgba(255, 255, 255, 0.58);
+      border-radius: 18px 12px 20px 13px / 13px 19px 12px 18px;
+      pointer-events: none;
+    }
+
+    .hero-home-action[data-home-action="poster"] {
+      border-color: rgba(207, 127, 75, 0.3);
+      background: linear-gradient(145deg, #fff8ee, #f9dfc7);
+      color: #73452d;
+    }
+
+    .hero-home-action[data-home-action="gacha"] {
+      border-color: rgba(196, 103, 139, 0.28);
+      background: linear-gradient(145deg, #fff6f7, #f7d9e4);
+      color: #764258;
+    }
+
+    .hero-home-action[data-home-action="ehon"] {
+      border-color: rgba(84, 139, 143, 0.26);
+      background: linear-gradient(145deg, #f7fbf7, #dbeceb);
+      color: #365f62;
+    }
+
+    .hero-home-action-icon {
+      box-sizing: content-box;
+      width: 21px;
+      height: 21px;
+      padding: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 11px 8px 12px 9px / 9px 12px 8px 11px;
+      background: rgba(255, 255, 255, 0.5);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84);
+    }
+
+    .hero-character-action.manga-launch-btn {
+      border-color: rgba(126, 86, 53, 0.22) !important;
+      border-radius: 17px 13px 18px 14px / 14px 18px 13px 17px !important;
+      background: linear-gradient(145deg, #fffaf1, #f3e3cf) !important;
+      color: #674a38 !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        2px 3px 0 rgba(107, 77, 50, 0.08),
+        0 8px 16px rgba(91, 67, 42, 0.1) !important;
+    }
+
+    .hero-diagnosis-launch-wrap {
+      border-color: rgba(190, 111, 59, 0.26) !important;
+      border-radius: 25px 19px 27px 20px / 20px 26px 18px 25px !important;
+      background: rgba(255, 248, 239, 0.76) !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.78),
+        3px 4px 0 rgba(126, 76, 45, 0.06),
+        0 12px 24px rgba(91, 67, 42, 0.08) !important;
+    }
+
+    @media (max-width: 520px) {
+      .hero-intro {
+        min-height: auto;
+        padding-bottom: 0;
+      }
+
+      .hero-intro .headline {
+        font-size: 0.82rem !important;
+      }
+
+      .hero-home-action {
+        border-radius: 19px 13px 21px 14px / 14px 20px 13px 19px;
+      }
+
+      .hero-home-action::before {
+        border-radius: 15px 10px 17px 11px / 11px 16px 10px 15px;
+      }
+    }
+
+    /* Give every visible home control the same responsive, tactile motion. */
+    #main-content .hero-intro :is(a, button),
+    #main-content .popup-buttons-bar :is(a, button) {
+      transition:
+        transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 180ms ease,
+        filter 180ms ease !important;
+      transform-origin: center;
+      will-change: transform;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      #main-content .hero-intro :is(a, button):hover,
+      #main-content .popup-buttons-bar :is(a, button):hover {
+        transform: translateY(-3px) scale(1.025);
+        filter: brightness(1.025) saturate(1.04);
+      }
+
+      #main-content .popup-buttons-bar .footer-feature-track .burn-card:hover {
+        transform: translateY(-2px) scale(1.012);
+      }
+
+      #main-content .popup-buttons-bar .footer-feature-dot:hover {
+        transform: scale(1.35);
+      }
+    }
+
+    #main-content .hero-intro :is(a, button):active,
+    #main-content .popup-buttons-bar :is(a, button):active {
+      transform: translateY(1px) scale(0.97);
+      filter: brightness(0.98);
+      transition-duration: 80ms !important;
+    }
+
+    #main-content .hero-intro :is(a, button):focus-visible,
+    #main-content .popup-buttons-bar :is(a, button):focus-visible {
+      outline: 3px solid rgba(214, 105, 27, 0.36);
+      outline-offset: 3px;
+      transform: translateY(-2px) scale(1.015);
+    }
+
+  </style>
 </head>
 
 <body>
@@ -9047,58 +9546,61 @@
 
 
           <!-- 4色カルーセル -->
-          <div class="gacha-btn-wrap">
-            <a href="/gacha/index.html" class="gacha-btn" id="goGachaPage">
-              <span class="gacha-icon">🎰</span>モビーガチャ
-              <span class="gacha-badge">NEW</span>
-            </a>
-          </div>
           <div class="hero-carousel-shell floating reveal delay-200">
             <div class="hero-model-stage" aria-label="Mobby 3D モデル">
               <div class="hero-model-carousel" id="heroModelCarousel" aria-live="polite"></div>
             </div>
             <div class="hero-character-row">
-              <button class="hero-character-action peek-heart-btn" id="openHeartNote" type="button" aria-label="心を覗く">&#128269;&#65038;</button>
+              <button class="hero-character-action manga-launch-btn" id="openManga" type="button" aria-label="選択中のキャラの漫画を読む">
+                <span class="manga-launch-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.5 3.5C6.2 2.7 9.4 3.6 12 5.7V16.7C9.4 14.6 6.2 13.7 2.5 14.5V3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                    <path d="M21.5 3.5C17.8 2.7 14.6 3.6 12 5.7V16.7C14.6 14.6 17.8 13.7 21.5 14.5V3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="manga-launch-label">漫画</span>
+              </button>
               <div class="hero-character-name" id="heroCharacterName">もびりん</div>
-              <button class="hero-character-action mode" id="heroCarouselModeButton" type="button" aria-label="カルーセル表示を切り替える">通常</button>
             </div>
           </div>
-          <div class="peek-heart-wrap">
-            <div class="heart-note-inline" id="heartNoteInline" hidden>
-              <div class="note-popup">
-                <button class="popup-close" id="closeHeartNoteInline" aria-label="Close note">×</button>
-                <div class="note-popup-inner">
-                  <div class="note-tabs" id="heartNoteTabs" hidden></div>
-                  <div class="note-popup-kicker">Private Note</div>
-                  <h2 id="heartNoteTitle">心を覗く</h2>
-                  <p id="heartNoteBody" class="note-body">ここに差し込みたい文章を置けるようにしてあります。
-ノートをそっと開いて、内側を読むような見え方です。
-
-あとでこの本文をそのまま差し替えれば使えます。</p>
-                  <div class="quote-page-controls" id="heartNoteQuotePager" hidden>
-                    <button type="button" class="quote-page-btn" id="heartNoteQuotePrev">←</button>
-                    <div class="quote-page-indicator" id="heartNoteQuoteIndicator">1 / 1</div>
-                    <button type="button" class="quote-page-btn" id="heartNoteQuoteNext">→</button>
-                  </div>
-                </div>
-              </div>
+          <div class="manga-viewer-wrap">
+            <div class="manga-inline" id="mangaInline" hidden>
+              <section class="manga-panel" aria-labelledby="mangaTitle">
+                <button class="manga-panel-close" id="closeManga" type="button" aria-label="漫画を閉じる">×</button>
+                <header class="manga-panel-header">
+                  <p class="manga-panel-kicker">Mobby Manga</p>
+                  <h2 class="manga-panel-title" id="mangaTitle">もびりんの漫画</h2>
+                </header>
+                <div class="manga-episode-tabs" id="mangaEpisodeTabs" aria-label="話数を選択"></div>
+                <div class="manga-pages" id="mangaPages"></div>
+              </section>
             </div>
           </div>
           <div class="hero-diagnosis-launch-wrap">
             <button class="btn btn-primary hero-diagnosis-launch" id="goMobbyDiagnosis" type="button">
               <span>モビー診断を始める</span>
             </button>
-            <p class="hero-diagnosis-caption">
-              <span class="caption-lead">キャラを見れば、あなたがわかる。</span>
-              <span>学校での立ち位置、恋愛、推し活スタイル。</span>
-              <span class="caption-detail">自分でもうまく説明できない“私っぽさ”を、</span>
-              <span class="caption-detail">一目で伝わる、持ち歩けるキャラクターにする。それがモビー診断です。</span>
-            </p>
           </div>
-          <a class="hero-ehon-column" id="goEhonPage" href="ehon/index.html" aria-label="絵本を見る">
-            <span class="hero-ehon-title">絵本を見る</span>
-            <span class="hero-ehon-text">タップすると、絵本ページを縦スクロールで読めます。</span>
-          </a>
+          <nav class="hero-home-actions" aria-label="メインメニュー">
+            <a class="hero-home-action" data-home-action="poster" href="compositing.html" aria-label="ポスター作成">
+              <span class="hero-home-action-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m6 16 4-4 3 3 2-2 3 3"/><circle cx="16.5" cy="8.5" r="1.5"/></svg>
+              </span>
+              <span>ポスター</span>
+            </a>
+            <a class="hero-home-action" data-home-action="gacha" href="gacha/index.html" aria-label="シールガチャ">
+              <span class="hero-home-action-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M7 4h10l2 5H5l2-5Z"/><path d="M6 9h12v10H6z"/><circle cx="12" cy="13" r="2.5"/><path d="M12 15.5V18"/></svg>
+              </span>
+              <span>ガチャ</span>
+            </a>
+            <a class="hero-home-action" data-home-action="ehon" id="goEhonPage" href="ehon/index.html" aria-label="絵本を見る">
+              <span class="hero-home-action-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 5.5c3.5-.8 6.5.1 9 2v11c-2.5-1.9-5.5-2.8-9-2V5.5Z"/><path d="M21 5.5c-3.5-.8-6.5.1-9 2v11c2.5-1.9 5.5-2.8 9-2V5.5Z"/></svg>
+              </span>
+              <span>絵本</span>
+            </a>
+          </nav>
         </div>
       </section>
     </div>
@@ -9788,20 +10290,16 @@
             <div class="gift-fan-menu is-open" id="giftFanMenu">
             <div class="burn-card-row footer-burn-card-row footer-feature-column-row" aria-label="おすすめメニュー">
               <div class="footer-feature-track">
-                <a class="burn-card footer-gacha-slide" href="gacha/index.html" aria-label="モビーガチャ">
-                  <img class="footer-gacha-ticket" src="gacha-new/ref/mobby-gacha-ticket.png" alt="" loading="lazy" decoding="async">
-                </a>
                 <a class="burn-card footer-compositing-slide" href="compositing.html" aria-label="ポスター作成">
                   <img src="compositing/reference/flier-mobby.png" alt="" loading="lazy" decoding="async">
                 </a>
-                <a class="burn-card footer-burn-main-slide" href="burn/burn-record/index.html" aria-label="BURN">
-                  <img class="footer-burn-main-image" src="burn/reference/burn-main-column.png" alt="" loading="lazy" decoding="async">
+                <a class="burn-card footer-gacha-slide" href="gacha/index.html" aria-label="モビーガチャ">
+                  <img class="footer-gacha-ticket" src="gacha-new/ref/mobby-gacha-ticket.png" alt="" loading="lazy" decoding="async">
                 </a>
               </div>
               <div class="footer-feature-dots" role="tablist" aria-label="おすすめメニュー切り替え">
-                <button class="footer-feature-dot is-active" type="button" data-footer-feature-dot="0" aria-label="モビーガチャを表示" aria-selected="true"></button>
-                <button class="footer-feature-dot" type="button" data-footer-feature-dot="1" aria-label="ポスター作成を表示" aria-selected="false"></button>
-                <button class="footer-feature-dot" type="button" data-footer-feature-dot="2" aria-label="BURNを表示" aria-selected="false"></button>
+                <button class="footer-feature-dot is-active" type="button" data-footer-feature-dot="0" aria-label="ポスター作成を表示" aria-selected="true"></button>
+                <button class="footer-feature-dot" type="button" data-footer-feature-dot="1" aria-label="モビーガチャを表示" aria-selected="false"></button>
               </div>
             </div>
             <div class="gift-fan-actions" aria-hidden="false">
@@ -9941,8 +10439,7 @@
       const carousel = document.getElementById("heroModelCarousel");
       const stage = carousel?.closest(".hero-model-stage");
       const heroCharacterName = document.getElementById("heroCharacterName");
-      const modeButton = document.getElementById("heroCarouselModeButton");
-      if (!carousel || !stage || !heroCharacterName || !modeButton) return;
+      if (!carousel || !stage || !heroCharacterName) return;
 
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       const HERO_CAROUSEL_SETS = [
@@ -10029,7 +10526,6 @@
             slide.style.setProperty("--hero-image", `url("${imageUrl}")`);
           }
         });
-        modeButton.textContent = currentSet.buttonLabel;
       }
 
       function getCircularDelta(index, currentIndex) {
@@ -10180,16 +10676,6 @@
           return;
         }
         startAutoRotate();
-      });
-
-      modeButton.addEventListener("click", () => {
-        modeButton.classList.remove("is-switching");
-        void modeButton.offsetWidth;
-        modeButton.classList.add("is-switching");
-        window.setTimeout(() => {
-          modeButton.classList.remove("is-switching");
-        }, 380);
-        switchCarouselSet(currentSetIndex + 1);
       });
 
       buildSlides();
@@ -11920,6 +12406,99 @@
       heartNoteQuoteIndex += 1;
       renderHeartNotePage();
     });
+
+    const mangaInline = document.getElementById('mangaInline');
+    const mangaTitle = document.getElementById('mangaTitle');
+    const mangaEpisodeTabs = document.getElementById('mangaEpisodeTabs');
+    const mangaPages = document.getElementById('mangaPages');
+    const mangaButton = document.getElementById('openManga');
+    let mangaActiveCharacter = '';
+    let mangaEpisodeIndex = 0;
+
+    const createMangaEpisodes = (pageCounts) => pageCounts.map((pageCount, episodeIndex) => ({
+      number: episodeIndex + 1,
+      pages: Array.from({ length: pageCount }, (_, pageIndex) => `${episodeIndex + 1}-${pageIndex + 1}.png`)
+    }));
+
+    const MANGA_LIBRARY = {
+      'mobby_fact_man_toka.webp': {
+        slug: 'mobirin',
+        name: 'もびりん',
+        episodes: createMangaEpisodes([3, 3])
+      },
+      'mobby_gal_toka.webp': {
+        slug: 'mobichi',
+        name: 'もびち',
+        episodes: createMangaEpisodes([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6, 4])
+      },
+      'mobby_yami_toka.webp': {
+        slug: 'yami',
+        name: '病みモビー',
+        episodes: createMangaEpisodes([3])
+      },
+      'mobby_yanki_toak.webp': {
+        slug: 'mobiyan',
+        name: 'もびやん',
+        episodes: createMangaEpisodes([3, 3, 3, 3])
+      }
+    };
+
+    function getActiveManga() {
+      const imagePath = window.__activeHeroSlide?.dataset.image || '';
+      const fileName = String(imagePath).replace(/\\/g, '/').split('/').pop();
+      return { key: fileName, manga: MANGA_LIBRARY[fileName] };
+    }
+
+    function renderManga() {
+      const { key, manga } = getActiveManga();
+      if (!manga || !mangaEpisodeTabs || !mangaPages) return;
+      if (mangaActiveCharacter !== key) {
+        mangaActiveCharacter = key;
+        mangaEpisodeIndex = 0;
+      }
+      const episode = manga.episodes[mangaEpisodeIndex] || manga.episodes[0];
+      if (mangaTitle) mangaTitle.textContent = `${manga.name}の漫画`;
+      mangaEpisodeTabs.innerHTML = manga.episodes.map((item, index) => `
+        <button type="button" class="manga-episode-button${index === mangaEpisodeIndex ? ' is-active' : ''}" data-manga-episode="${index}" aria-pressed="${index === mangaEpisodeIndex ? 'true' : 'false'}">
+          第${item.number}話
+        </button>
+      `).join('');
+      mangaPages.innerHTML = episode.pages.map((page, pageIndex) => `
+        <img src="manga/${manga.slug}/${page}" alt="${manga.name} 第${episode.number}話 ${pageIndex + 1}ページ" loading="${pageIndex === 0 ? 'eager' : 'lazy'}" decoding="async">
+      `).join('');
+      mangaPages.scrollTop = 0;
+      mangaEpisodeTabs.querySelectorAll('[data-manga-episode]').forEach((button) => {
+        button.addEventListener('click', () => {
+          mangaEpisodeIndex = Number(button.dataset.mangaEpisode || 0);
+          renderManga();
+        });
+      });
+    }
+
+    function openManga() {
+      renderManga();
+      if (mangaInline) mangaInline.hidden = false;
+      mangaButton?.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeManga() {
+      if (mangaInline) mangaInline.hidden = true;
+      mangaButton?.setAttribute('aria-expanded', 'false');
+    }
+
+    mangaButton?.setAttribute('aria-expanded', 'false');
+    mangaButton?.addEventListener('click', () => {
+      if (!mangaInline?.hidden) {
+        closeManga();
+        return;
+      }
+      openManga();
+    });
+    document.getElementById('closeManga')?.addEventListener('click', closeManga);
+    window.addEventListener('hero-slide-change', () => {
+      if (!mangaInline?.hidden) renderManga();
+    });
+
     giftFanActions.forEach((action) => {
       action.addEventListener('click', () => {
         if (action.id === 'openPricePopup') return;
