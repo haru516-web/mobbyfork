@@ -8535,83 +8535,6 @@
       -webkit-user-drag: none;
     }
 
-    .seal-gacha-launch-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 10050;
-      display: grid;
-      place-items: center;
-      padding: 22px;
-      background: rgba(35, 29, 24, 0.48);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .seal-gacha-launch-modal[hidden] {
-      display: none !important;
-    }
-
-    .seal-gacha-launch-dialog {
-      position: relative;
-      width: min(430px, 100%);
-      padding: 18px 18px 20px;
-      border: 2px solid rgba(255, 111, 159, 0.36);
-      border-radius: 24px;
-      background: rgba(255, 250, 240, 0.98);
-      box-shadow: 0 24px 48px rgba(35, 29, 24, 0.24);
-      text-align: center;
-    }
-
-    .seal-gacha-launch-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 34px;
-      height: 34px;
-      border: 0;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.92);
-      color: #5a3a2a;
-      font-size: 1.25rem;
-      font-weight: 900;
-      line-height: 1;
-      box-shadow: 0 8px 16px rgba(91, 67, 42, 0.12);
-      cursor: pointer;
-    }
-
-    .seal-gacha-launch-image {
-      width: 100%;
-      max-height: 245px;
-      display: block;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 18px;
-      background: #faf1e2;
-      -webkit-user-drag: none;
-    }
-
-    .seal-gacha-launch-title {
-      margin: 16px 0 14px;
-      color: #f74891;
-      font-size: clamp(1.35rem, 5vw, 1.8rem);
-      font-weight: 900;
-      line-height: 1.25;
-    }
-
-    .seal-gacha-launch-button {
-      width: min(260px, 100%);
-      min-height: 50px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #ff7bac, #f74891);
-      color: #fff;
-      font-weight: 900;
-      text-decoration: none;
-      box-shadow: 0 12px 22px rgba(247, 72, 145, 0.24);
-    }
-
     .footer-gacha-slide .burn-card-copy {
       min-height: 165px;
       padding: 26px 16px 18px 22px;
@@ -9532,17 +9455,19 @@
       transform-origin: center bottom;
     }
 
-    #main-content .popup-buttons-bar #giftFanMenu .gift-fan-actions .gift-fan-action:hover {
-      transform: translateY(-5px) scale(1.045) !important;
-      filter: brightness(1.04) saturate(1.08) !important;
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.92),
-        0 7px 0 rgba(107, 77, 50, 0.08),
-        0 15px 24px rgba(91, 67, 42, 0.18) !important;
-    }
+    @media (hover: hover) and (pointer: fine) {
+      #main-content .popup-buttons-bar #giftFanMenu .gift-fan-actions .gift-fan-action:hover {
+        transform: translateY(-5px) scale(1.045) !important;
+        filter: brightness(1.04) saturate(1.08) !important;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.92),
+          0 7px 0 rgba(107, 77, 50, 0.08),
+          0 15px 24px rgba(91, 67, 42, 0.18) !important;
+      }
 
-    #main-content .popup-buttons-bar #giftFanMenu .gift-fan-actions .gift-fan-action:hover .footer-btn-icon {
-      transform: translateY(-3px) rotate(-6deg) scale(1.14) !important;
+      #main-content .popup-buttons-bar #giftFanMenu .gift-fan-actions .gift-fan-action:hover .footer-btn-icon {
+        transform: translateY(-3px) rotate(-6deg) scale(1.14) !important;
+      }
     }
 
     #main-content .popup-buttons-bar #giftFanMenu .gift-fan-actions .gift-fan-action:active {
@@ -10099,6 +10024,97 @@
       #main-content .popup-buttons-bar .footer-note-embed:not(.is-open):has(.footer-note-title:hover) .footer-note-list .note-embed:first-child {
         opacity: 1;
         transform: translateY(0) scale(1);
+      }
+    }
+
+    /* On touch devices, the first tap opens the same preview and the preview itself performs the action. */
+    @media (hover: none), (pointer: coarse) {
+      #main-content :is(#goMobbyDiagnosis, .hero-home-action, #openManga, #giftFanMenu .gift-fan-action).is-mobile-preview-open {
+        z-index: 320 !important;
+        transform: translateY(-3px) scale(1.025) !important;
+        filter: brightness(1.025) saturate(1.04) !important;
+      }
+
+      #main-content :is(#goMobbyDiagnosis, .hero-home-action, #openManga, #giftFanMenu .gift-fan-action).is-mobile-preview-open > .footer-action-preview {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+      }
+
+      #main-content :is(#goMobbyDiagnosis, .hero-home-action[data-home-action="gacha"]).is-mobile-preview-open > .footer-action-preview,
+      #main-content #giftFanMenu .gift-fan-action[data-fan-item="vote"].is-mobile-preview-open > .footer-action-preview {
+        transform: translate(-50%, 0) scale(1);
+      }
+
+      #main-content :is(#goMobbyDiagnosis, .hero-home-action, #openManga) > .footer-action-preview {
+        top: calc(100% + 12px);
+        bottom: auto;
+        transform-origin: center top;
+      }
+
+      #main-content :is(#goMobbyDiagnosis, .hero-home-action[data-home-action="gacha"]) > .footer-action-preview {
+        transform: translate(-50%, -12px) scale(0.9);
+      }
+
+      #main-content :is(.hero-home-action[data-home-action="poster"], .hero-home-action[data-home-action="ehon"], #openManga) > .footer-action-preview {
+        transform: translateY(-12px) scale(0.9);
+      }
+
+      #main-content :is(#goMobbyDiagnosis, .hero-home-action, #openManga) > .footer-action-preview::after {
+        top: -7px;
+        bottom: auto;
+        transform: rotate(225deg);
+      }
+
+      #main-content .popup-buttons-bar .footer-note-embed:not(.is-open) .footer-note-list {
+        position: absolute;
+        left: 50%;
+        bottom: calc(100% + 14px);
+        width: min(494px, calc(100vw - 40px));
+        padding: 9px;
+        display: flex !important;
+        border: 1px solid rgba(237, 126, 57, 0.25);
+        border-radius: 22px;
+        background: rgba(255, 251, 246, 0.98);
+        box-shadow:
+          0 18px 42px rgba(91, 67, 42, 0.22),
+          0 4px 12px rgba(214, 105, 27, 0.12);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        overflow: hidden;
+        transform: translate(-50%, 16px) scale(0.9);
+        transform-origin: center bottom;
+        z-index: 330;
+        transition:
+          opacity 180ms ease,
+          visibility 180ms ease,
+          transform 260ms cubic-bezier(0.2, 0.9, 0.25, 1.22);
+      }
+
+      #main-content .popup-buttons-bar .footer-note-embed:not(.is-open) .footer-note-list .note-embed {
+        display: none !important;
+      }
+
+      #main-content .popup-buttons-bar .footer-note-embed:not(.is-open) .footer-note-list .note-embed:first-child {
+        display: block !important;
+        width: 100% !important;
+        height: 178px !important;
+        margin: 0 !important;
+        border-radius: 15px;
+      }
+
+      #main-content .popup-buttons-bar .footer-note-embed.is-mobile-preview-open:not(.is-open) {
+        z-index: 330;
+        transform: translateY(-4px) scale(1.02);
+      }
+
+      #main-content .popup-buttons-bar .footer-note-embed.is-mobile-preview-open:not(.is-open) .footer-note-list {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translate(-50%, 0) scale(1);
       }
     }
 
@@ -10953,15 +10969,6 @@
 
   <!-- Matter.js -->
   <!-- EmailJS -->
-  <div class="seal-gacha-launch-modal" id="sealGachaLaunchModal" role="dialog" aria-modal="true" aria-labelledby="sealGachaLaunchTitle" hidden>
-    <div class="seal-gacha-launch-dialog">
-      <button class="seal-gacha-launch-close" id="closeSealGachaLaunch" type="button" aria-label="閉じる">×</button>
-      <img class="seal-gacha-launch-image" src="gacha-new/ref/mobby-gacha-ticket.png" alt="" loading="eager" decoding="async">
-      <h2 class="seal-gacha-launch-title" id="sealGachaLaunchTitle">シールガチャ！<br>公開されました！</h2>
-      <a class="seal-gacha-launch-button" id="sealGachaLaunchLink" href="gacha/index.html">シールガチャを見る</a>
-    </div>
-  </div>
-
   <script>
     /* reveal */
     function initScrollObserver() {
@@ -11700,30 +11707,6 @@
       initScrollObserver();
     };
 
-    const showSealGachaLaunchAfterMain = () => {
-      const modal = document.getElementById('sealGachaLaunchModal');
-      const closeButton = document.getElementById('closeSealGachaLaunch');
-      if (!modal) return;
-
-      let finished = false;
-      const finish = () => {
-        if (finished) return;
-        finished = true;
-        modal.hidden = true;
-      };
-
-      modal.hidden = false;
-      closeButton?.addEventListener('click', finish, { once: true });
-      modal.addEventListener('click', (event) => {
-        if (event.target === modal) finish();
-      });
-      document.addEventListener('keydown', function handleSealGachaLaunchKey(event) {
-        if (event.key !== 'Escape' || modal.hidden) return;
-        document.removeEventListener('keydown', handleSealGachaLaunchKey, true);
-        finish();
-      }, true);
-    };
-
     const shouldSkipSplash = false;
 
     if (shouldSkipSplash) {
@@ -11732,7 +11715,6 @@
         splashElement.remove();
       }
       revealMainContent();
-      showSealGachaLaunchAfterMain();
     }
 
     if (!shouldSkipSplash && splashElement) {
@@ -11751,7 +11733,6 @@
         window.setTimeout(() => {
           splashElement.classList.add('hidden');
           revealMainContent();
-          showSealGachaLaunchAfterMain();
         }, 960);
 
         window.setTimeout(() => {
@@ -14541,6 +14522,86 @@
     })();
   </script>
 
+  <script>
+    (() => {
+      const touchPreviewQuery = window.matchMedia('(hover: none), (pointer: coarse)');
+      const previewControlSelector = [
+        '#goMobbyDiagnosis',
+        '.hero-home-action',
+        '#openManga',
+        '#giftFanMenu .gift-fan-action'
+      ].join(',');
+
+      const closePreview = (owner) => {
+        if (!owner) return;
+        owner.classList.remove('is-mobile-preview-open');
+        const preview = owner.querySelector(':scope > .footer-action-preview');
+        preview?.setAttribute('aria-hidden', 'true');
+
+        if (owner.classList.contains('footer-note-embed') && !owner.classList.contains('is-open')) {
+          const list = owner.querySelector('.footer-note-list');
+          if (list) list.hidden = true;
+        }
+      };
+
+      const closeAllPreviews = (except = null) => {
+        document.querySelectorAll('.is-mobile-preview-open').forEach((owner) => {
+          if (owner !== except) closePreview(owner);
+        });
+      };
+
+      const openPreview = (owner) => {
+        closeAllPreviews(owner);
+        owner.classList.add('is-mobile-preview-open');
+        const preview = owner.querySelector(':scope > .footer-action-preview');
+        preview?.setAttribute('aria-hidden', 'false');
+      };
+
+      document.addEventListener('click', (event) => {
+        if (!touchPreviewQuery.matches || !(event.target instanceof Element)) return;
+
+        const tappedPreview = event.target.closest('.footer-action-preview');
+        if (tappedPreview) {
+          closePreview(tappedPreview.closest(previewControlSelector));
+          return;
+        }
+
+        const control = event.target.closest(previewControlSelector);
+        if (control && control.querySelector(':scope > .footer-action-preview')) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          if (control.classList.contains('is-mobile-preview-open')) {
+            closePreview(control);
+          } else {
+            openPreview(control);
+          }
+          return;
+        }
+
+        const noteToggle = event.target.closest('#footerNoteToggle');
+        if (noteToggle) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          const noteOwner = noteToggle.closest('.footer-note-embed');
+          if (!noteOwner) return;
+          if (noteOwner.classList.contains('is-mobile-preview-open')) {
+            closePreview(noteOwner);
+          } else {
+            closeAllPreviews(noteOwner);
+            noteOwner.classList.add('is-mobile-preview-open');
+            const list = noteOwner.querySelector('.footer-note-list');
+            if (list) list.hidden = false;
+          }
+          return;
+        }
+
+        if (!event.target.closest('.footer-note-list')) closeAllPreviews();
+      }, true);
+
+      touchPreviewQuery.addEventListener('change', () => closeAllPreviews());
+    })();
+  </script>
+
   <!-- ページ遷移フェード -->
   <div class="page-transition-overlay" id="pageTransitionOverlay"></div>
   <script>
@@ -14569,37 +14630,6 @@
           window.location.href = href;
         }, 500);
       }
-
-      var sealGachaLaunchModal = document.getElementById('sealGachaLaunchModal');
-      var closeSealGachaLaunch = document.getElementById('closeSealGachaLaunch');
-      var sealGachaLaunchLink = document.getElementById('sealGachaLaunchLink');
-      function closeSealGachaLaunchModal() {
-        if (sealGachaLaunchModal) {
-          sealGachaLaunchModal.hidden = true;
-        }
-      }
-      if (closeSealGachaLaunch) {
-        closeSealGachaLaunch.addEventListener('click', closeSealGachaLaunchModal);
-      }
-      if (sealGachaLaunchModal) {
-        sealGachaLaunchModal.addEventListener('click', function (event) {
-          if (event.target === sealGachaLaunchModal) {
-            closeSealGachaLaunchModal();
-          }
-        });
-      }
-      if (sealGachaLaunchLink) {
-        sealGachaLaunchLink.addEventListener('click', function (e) {
-          e.preventDefault();
-          closeSealGachaLaunchModal();
-          fadeNavigate(sealGachaLaunchLink.getAttribute('href'));
-        });
-      }
-      document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && sealGachaLaunchModal && !sealGachaLaunchModal.hidden) {
-          closeSealGachaLaunchModal();
-        }
-      });
 
       // ガチャボタン
       var gachaBtn = document.getElementById('goGachaPage');
