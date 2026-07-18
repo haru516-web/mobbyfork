@@ -9716,6 +9716,25 @@
       isolation: isolate;
     }
 
+    /* The animated container is a stacking context. Keep the whole hero above
+       the later footer columns so its previews are never painted underneath. */
+    #main-content .hero-intro .hero,
+    #main-content .hero-intro .hero > .container {
+      position: relative;
+      z-index: 40;
+    }
+
+    /* Give the active preview extra headroom inside that hero context. */
+    #main-content .hero-intro .hero:has(#goMobbyDiagnosis:hover),
+    #main-content .hero-intro .hero:has(.hero-home-action:hover),
+    #main-content .hero-intro .hero:has(.is-mobile-preview-open),
+    #main-content .hero-intro .hero > .container:has(#goMobbyDiagnosis:hover),
+    #main-content .hero-intro .hero > .container:has(.hero-home-action:hover),
+    #main-content .hero-intro .hero > .container:has(.is-mobile-preview-open) {
+      position: relative;
+      z-index: 500 !important;
+    }
+
     #main-content .hero-home-action,
     #main-content #goMobbyDiagnosis {
       position: relative;
