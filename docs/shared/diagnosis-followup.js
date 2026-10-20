@@ -22,22 +22,29 @@
     return [...candidates].some(node => node.getClientRects().length && !node.closest("[hidden]"));
   };
   function mount() {
-    if (document.querySelector(".mobby-followup") || !isResultVisible()) return;
+    const existing = document.querySelector(".mobby-followup");
+    const resultVisible = isResultVisible();
+    if (existing) {
+      if (existing.hidden === resultVisible) existing.hidden = !resultVisible;
+      return;
+    }
+    if (!resultVisible) return;
     const app = document.querySelector("#app") || document.querySelector("main") || document.body;
     const card = document.createElement("section");
     card.className = "mobby-followup";
     card.setAttribute("aria-labelledby", "mobbyFollowupTitle");
     card.innerHTML = `
-      <p class="mobby-followup__eyebrow">診断のつづきを楽しもう</p>
-      <h2 class="mobby-followup__title" id="mobbyFollowupTitle">モビーたちを見てみよう</h2>
-      <p class="mobby-followup__lead">診断に登場するモビーたちをご紹介します。</p>
+      <p class="mobby-followup__eyebrow">モビーと、毎日をもっと。</p>
+      <h2 class="mobby-followup__title" id="mobbyFollowupTitle">診断のあとは、<br>モビーとおでかけ。</h2>
+      <p class="mobby-followup__lead">歩いた分だけ、御朱印が集まる。<br>モビーと小さな旅をするiPhoneアプリ「もび道」。</p>
+      <a class="mobby-followup__action mobby-followup__app" href="${pageUrl("#mobidou")}">もび道をみてみる →</a>
+      <p class="mobby-followup__note">公開準備中。診断結果のキャラクターとアプリの登場モビーは異なります。</p>
       <div class="mobby-followup__characters" role="list" aria-label="モビーキャラクター">
         ${characters.map(c => `<div class="mobby-followup__character" role="listitem"><img src="${imageUrl(c.image)}" alt="${c.name}" loading="lazy"><span>${c.name}</span></div>`).join("")}
       </div>
       <div class="mobby-followup__actions">
         <a class="mobby-followup__action" href="${pageUrl("manga-flow.html")}">4コマ漫画を見てみる</a>
         <a class="mobby-followup__action mobby-followup__action--secondary" href="${pageUrl("compositing.html")}">ポスターを作ってみる</a>
-        ${location.pathname.includes("/16renai/") ? `<a class="mobby-followup__action mobby-followup__action--gacha" href="${pageUrl("gacha/index.html")}">恋愛モビー診断のシールガチャを引く</a>` : ""}
       </div>`;
     app.appendChild(card);
   }

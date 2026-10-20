@@ -1,4 +1,9 @@
 (function () {
+  // Existing paid results can still be recovered. New draws are retired.
+  if (new URLSearchParams(window.location.search).get('mode') !== 'paid') {
+    window.location.replace('index.html');
+    return;
+  }
   const machineWrap = document.getElementById("machineWrap");
   const spinButton = document.getElementById("spinButton");
   const handleButton = document.getElementById("handleButton");
