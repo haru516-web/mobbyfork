@@ -460,6 +460,7 @@
     [/\/16school\//, '学校での裏キャラを、40問で見つけます。'],
     [/\/16renai\//, '恋のクセを、40問で見つけます。'],
     [/\/16love\//, '恋の重さを、かわいいタイプに変えて診断します。'],
+    [/\/16nyako\//, '好きな人への接し方を、猫のタイプで診断します。'],
     [/\/16fear\//, '怖さの正体を、タイプ名にして診断します。'],
     [/\/16night\//, '夜の才能を、40問で照らします。'],
     [/\/16stan\//, 'あなたの沼り方を、推し活タイプとして診断します。'],
@@ -784,7 +785,7 @@
 
   const getQuizProgress = () => {
     const pathname = window.location.pathname.toLowerCase();
-    const diagnosisPath = /\/(?:16school|16renai|16love|16fear|16night|16stan|16ml|hinata-aoi|imagen-luca|karen|meeco|miyake-yuko)\//.test(pathname);
+    const diagnosisPath = /\/(?:16school|16renai|16love|16nyako|16fear|16night|16stan|16ml|hinata-aoi|imagen-luca|karen|meeco|miyake-yuko)\//.test(pathname);
     if (!diagnosisPath) return null;
 
     const visibleAnswerControls = Array.from(document.querySelectorAll(QUIZ_ANSWER_SELECTOR)).filter(isVisibleQuizControl);
@@ -801,7 +802,7 @@
     const describedTotal = description.match(/(\d{1,3})\s*問/)?.[1];
     const fallbackTotals = [
       [/\/16ml\//, 12],
-      [/\/(?:16school|16renai|16love|16fear|16night|16stan)\//, 40]
+      [/\/(?:16school|16renai|16love|16nyako|16fear|16night|16stan)\//, 40]
     ];
 
     let total = questionRange ? Number(questionRange[3]) : Number(describedTotal || 0);
