@@ -35,10 +35,10 @@
     card.setAttribute("aria-labelledby", "mobbyFollowupTitle");
     card.innerHTML = `
       <p class="mobby-followup__eyebrow">モビーと、毎日をもっと。</p>
-      <h2 class="mobby-followup__title" id="mobbyFollowupTitle">診断のあとは、<br>モビーとおでかけ。</h2>
-      <p class="mobby-followup__lead">歩いた分だけ、御朱印が集まる。<br>モビーと小さな旅をするiPhoneアプリ「もび道」。</p>
-      <a class="mobby-followup__action mobby-followup__app" href="${pageUrl("#mobidou")}">もび道をみてみる →</a>
-      <p class="mobby-followup__note">公開準備中。診断結果のキャラクターとアプリの登場モビーは異なります。</p>
+      <h2 class="mobby-followup__title" id="mobbyFollowupTitle">診断のあとは、<br>猫に会いにいこう。</h2>
+      <p class="mobby-followup__lead">歩いた数や天気で、その日だけの猫に会える。<br>にゃこモビーを集めるiPhoneアプリ「にゃっコレ」。</p>
+      <a class="mobby-followup__action mobby-followup__app" href="https://apps.apple.com/jp/app/%E3%81%AB%E3%82%83%E3%81%A3%E3%82%B3%E3%83%AC/id6828308044" target="_blank" rel="noopener">にゃっコレをみてみる →</a>
+      <p class="mobby-followup__note">診断結果のキャラクターとアプリの登場モビーは異なります。</p>
       <div class="mobby-followup__characters" role="list" aria-label="モビーキャラクター">
         ${characters.map(c => `<div class="mobby-followup__character" role="listitem"><img src="${imageUrl(c.image)}" alt="${c.name}" loading="lazy"><span>${c.name}</span></div>`).join("")}
       </div>
