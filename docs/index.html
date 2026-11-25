@@ -9736,6 +9736,80 @@
       .nk-popup__title { font-size: 1.45rem; }
     }
   </style>
+  <style id="nyakkore-entry-promo">
+    /* 入場時のアプリ案内：画面をふさがない小さなカード（PCは右下、スマホは下に浮かぶ） */
+    .app-promo-card {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9000;
+      width: 340px;
+      max-width: calc(100vw - 24px);
+      padding: 16px 16px 12px;
+      border-radius: 22px;
+      background: #fffaf2;
+      box-shadow: 0 18px 40px rgba(97, 73, 45, 0.26), 0 2px 6px rgba(97, 73, 45, 0.12);
+      color: #4a3728;
+      font-family: inherit;
+      opacity: 0;
+      transform: translateY(24px) scale(0.98);
+      transition: opacity 0.32s ease, transform 0.32s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+      pointer-events: none;
+    }
+    .app-promo-card[hidden] { display: none !important; }
+    .app-promo-card.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+    .app-promo-card__close {
+      position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border: 0; border-radius: 50%;
+      background: rgba(74, 55, 40, 0.08); color: #6b5442; font-size: 18px; line-height: 30px; cursor: pointer;
+    }
+    .app-promo-card__close:hover { background: rgba(74, 55, 40, 0.14); }
+    .app-promo-card__head { display: flex; align-items: center; gap: 12px; padding-right: 30px; }
+    .app-promo-card__icon { width: 54px; height: 54px; border-radius: 22%; box-shadow: 0 6px 12px rgba(51, 39, 24, 0.24); flex-shrink: 0; }
+    .app-promo-card__kicker { margin: 0; font-size: 10px; font-weight: 800; letter-spacing: 0.14em; color: #d2691e; }
+    .app-promo-card__title { margin: 2px 0 0; line-height: 0; }
+    .app-promo-card__logo { display: block; width: 138px; height: auto; }
+    /* にゃっコレの三毛猫：カードが出たときに1回だけ「いないいないばあ」して、そのまま縁に座る */
+    .app-promo-card__cat {
+      flex: 0 0 64px;
+      width: 64px;
+      height: 64px;
+      background: url('assets/nyakkore-site/peekaboo-strip.webp') 0 0 / 512px 64px no-repeat;
+      filter: drop-shadow(0 4px 4px rgba(97, 73, 45, 0.18));
+    }
+    .app-promo-card.is-visible .app-promo-card__cat {
+      animation: nkPromoPeek 1.6s steps(7) 0.45s 1 both;
+    }
+    @keyframes nkPromoPeek {
+      from { background-position: 0 0; }
+      to { background-position: -448px 0; }
+    }
+    .app-promo-card__lead { margin: 2px 0 0; font-size: 12px; font-weight: 700; color: #8a6a4a; line-height: 1.45; }
+    .app-promo-card__shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 12px 0 12px; }
+    .app-promo-card__shots img {
+      display: block; width: 100%; height: 104px; object-fit: cover; object-position: center 18%;
+      border-radius: 12px; background: #f3e6d2; box-shadow: 0 4px 10px rgba(97, 73, 45, 0.18);
+    }
+    .app-promo-card__actions { display: flex; align-items: center; gap: 10px; }
+    .app-promo-card__badge { display: inline-flex; flex-shrink: 0; }
+    .app-promo-card__badge img { display: block; width: 132px; height: auto; }
+    .app-promo-card__more {
+      flex: 1; min-height: 40px; border: 0; border-radius: 999px; background: #f6e3cc; color: #8a4a1f;
+      font-size: 13px; font-weight: 800; cursor: pointer;
+    }
+    .app-promo-card__more:hover { background: #f1d6b6; }
+    .app-promo-card__never {
+      display: flex; align-items: center; gap: 6px; margin: 10px 2px 0; font-size: 11.5px; color: #8a735a; cursor: pointer; user-select: none;
+    }
+    .app-promo-card__never input { width: 16px; height: 16px; margin: 0; accent-color: #d2691e; cursor: pointer; }
+    @media (max-width: 520px) {
+      .app-promo-card { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; }
+      .app-promo-card__shots img { height: 92px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .app-promo-card { transition: opacity 0.2s ease; transform: none; }
+      .app-promo-card.is-visible .app-promo-card__cat { animation: none; background-position: -448px 0; }
+    }
+  </style>
 </head>
 
 <body>
@@ -10420,7 +10494,7 @@
           <a class="btn btn-primary" href="16love/index.html">メンヘラモビー診断</a>
           <a class="btn btn-primary" href="16stan/index.html">推し活モビー診断</a>
           <a class="btn btn-primary" href="16renai/index.html">恋愛モビー診断</a>
-          <a class="btn btn-primary" href="16nyako/index.html">にゃん恋診断</a>
+          <a class="btn btn-primary" href="16nyako/index.html">にゃん恋モビー診断</a>
           <a class="btn btn-primary" href="/mypage-register.html">診断まとめマイページ作成</a>
         </div>
       </div>
@@ -15789,6 +15863,88 @@
         if (carousel.querySelector('.is-hero-pulling')) dismiss();
       });
       observer.observe(carousel, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    })();
+  </script>
+  <aside class="app-promo-card" id="appPromoCard" role="dialog" aria-modal="false" aria-labelledby="appPromoTitle" hidden>
+    <button class="app-promo-card__close" id="appPromoClose" type="button" aria-label="閉じる">×</button>
+    <div class="app-promo-card__head">
+      <span class="app-promo-card__cat" aria-hidden="true"></span>
+      <div>
+        <p class="app-promo-card__kicker">Mobbyの新アプリ</p>
+        <h2 class="app-promo-card__title" id="appPromoTitle"><img class="app-promo-card__logo" src="assets/nyakkore-site/logo.webp" width="190" height="60" alt="にゃっコレ"></h2>
+        <p class="app-promo-card__lead">猫に出会って集める、iPhoneアプリ</p>
+      </div>
+    </div>
+    <div class="app-promo-card__shots" aria-hidden="true">
+      <img src="assets/nyakkore-site/shot-home.webp?v=2" width="300" height="651" alt="" loading="lazy">
+      <img src="assets/nyakkore-site/shot-deai.webp?v=2" width="300" height="651" alt="" loading="lazy">
+      <img src="assets/nyakkore-site/shot-zukan.webp?v=2" width="300" height="651" alt="" loading="lazy">
+    </div>
+    <div class="app-promo-card__actions">
+      <a class="app-promo-card__badge" id="appPromoStore" href="https://apps.apple.com/jp/app/%E3%81%AB%E3%82%83%E3%81%A3%E3%82%B3%E3%83%AC/id6828308044" target="_blank" rel="noopener"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp?size=250x83" alt="App Storeでダウンロード" width="132" height="44" loading="lazy"></a>
+      <button class="app-promo-card__more" id="appPromoMore" type="button">くわしく見る</button>
+    </div>
+    <label class="app-promo-card__never"><input type="checkbox" id="appPromoNever"> 今後は表示しない</label>
+  </aside>
+  <script>
+    /* 入場時のアプリ案内
+       - 「今後は表示しない」にチェックして閉じたら、二度と出さない
+       - チェックしなくても、同じタブ（セッション）の間は1回だけ
+       - 起動演出や、ほかのポップアップが開いている間は待つ */
+    (() => {
+      const card = document.getElementById('appPromoCard');
+      if (!card) return;
+      const OFF_KEY = 'mobbyAppPromoOff';
+      const SESSION_KEY = 'mobbyAppPromoShown';
+      const get = (store, key) => { try { return window[store].getItem(key); } catch (e) { return null; } };
+      const set = (store, key, val) => { try { window[store].setItem(key, val); } catch (e) { /* noop */ } };
+      if (get('localStorage', OFF_KEY) === '1') return;
+      if (get('sessionStorage', SESSION_KEY) === '1') return;
+
+      const never = document.getElementById('appPromoNever');
+      let shown = false;
+
+      const isReady = () => {
+        const main = document.getElementById('main-content');
+        if (main && !main.classList.contains('visible')) return false;
+        if (document.body.classList.contains('splash-active')) return false;
+        if (document.querySelector('.popup-overlay.is-open')) return false;
+        return true;
+      };
+
+      const show = () => {
+        if (shown) return;
+        shown = true;
+        set('sessionStorage', SESSION_KEY, '1');
+        card.hidden = false;
+        requestAnimationFrame(() => requestAnimationFrame(() => card.classList.add('is-visible')));
+      };
+
+      const close = () => {
+        if (never && never.checked) set('localStorage', OFF_KEY, '1');
+        card.classList.remove('is-visible');
+        window.setTimeout(() => { card.hidden = true; }, 340);
+      };
+
+      document.getElementById('appPromoClose')?.addEventListener('click', close);
+      document.getElementById('appPromoStore')?.addEventListener('click', () => { window.setTimeout(close, 150); });
+      document.getElementById('appPromoMore')?.addEventListener('click', () => {
+        close();
+        if (typeof openPopup === 'function') openPopup('nyakkorePopup');
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && card.classList.contains('is-visible')) close();
+      });
+
+      /* ページを開いて少し落ち着いてから出す（最長30秒待つ） */
+      const startedAt = Date.now();
+      const waitAndShow = () => {
+        if (Date.now() - startedAt > 30000) return;
+        if (!isReady()) { window.setTimeout(waitAndShow, 400); return; }
+        window.setTimeout(() => { if (isReady()) show(); else window.setTimeout(waitAndShow, 400); }, 1800);
+      };
+      if (document.readyState === 'complete') waitAndShow();
+      else window.addEventListener('load', waitAndShow, { once: true });
     })();
   </script>
 </body>

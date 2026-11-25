@@ -71,7 +71,7 @@ function renderIntro() {
     app.innerHTML = `<div class="card fade-in">
         <p class="hearts">♥ ♥ ♥</p>
         <p class="kicker">あなたが猫なら、恋でどの猫かも？</p>
-        <h2 class="title">にゃん<em>恋</em>診断</h2>
+        <h2 class="title">にゃん<em>恋</em>モビー診断</h2>
         <p class="subcopy">にゃっコレ by mobby</p>
         <div class="hero-row">${heroes}</div>
         <div class="divider">♥</div>
@@ -141,7 +141,7 @@ function appPromo() {
         <ul class="app-promo__points"><li><b>毎晩20時</b>に、条件がそろった猫が候補に届く</li><li><b>出会った猫</b>はコレクションに記録</li><li><b>猫と一緒に</b>カメラで写真も撮れる</li></ul>
         <a class="app-promo__badge" href="${APP_URL}" target="_blank" rel="noopener"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp?size=250x83" alt="App Storeでダウンロード" width="200" height="67"></a></aside>`;
 }
-function shareText(c) { return `私はにゃん恋診断で「${c.name}（${c.breed}）」でした🐱\n#にゃん恋診断 #にゃっコレ`; }
+function shareText(c) { return `私はにゃん恋モビー診断で「${c.name}（${c.breed}）」でした🐱\n#にゃん恋モビー診断 #にゃっコレ`; }
 
 function renderResult() {
     if (!isDone()) { state.step = "intro"; render(); return; }
