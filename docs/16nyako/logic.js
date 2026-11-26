@@ -223,7 +223,7 @@ function renderResult() {
 
         <div class="share"><a class="btn x" id="shareX" target="_blank" rel="noopener">Xでシェア</a><a class="btn line" id="shareLine" target="_blank" rel="noopener">LINEで送る</a><button class="btn" id="shareNative">シェアする</button></div>
         <div class="nav-row"><button class="btn" id="btnAll">16タイプを見る</button><button class="btn" id="btnRetry">もう一度診断する</button></div></div>`;
-    setupRoll(document.getElementById("catStage"));
+    setupRoll(app.querySelector(".cat-stage"));
     const text = shareText(c);
     document.getElementById("shareX").href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(SITE_URL)}`;
     document.getElementById("shareLine").href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(SITE_URL)}&text=${encodeURIComponent(text)}`;
@@ -295,7 +295,7 @@ function showModal(code) {
     const old = document.getElementById("modal"); if (old) old.remove();
     const el = document.createElement("div"); el.id = "modal"; el.className = "modal";
     el.innerHTML = `<div class="modal-box"><button class="x-close" aria-label="閉じる">×</button>
-        <img src="${c.img}" alt="${esc(c.breed)}"><div class="love-result-hero"><h3 class="rname">${esc(c.name)}</h3><p class="rbreed">${esc(c.breed)}</p><span class="code-chip">タイプ ${code}</span><p class="rcatch">「${esc(c.catch)}」</p></div>
+        ${rollStage(c, "modal-cat")}<div class="love-result-hero"><h3 class="rname">${esc(c.name)}</h3><p class="rbreed">${esc(c.breed)}</p><span class="code-chip">タイプ ${code}</span><p class="rcatch">「${esc(c.catch)}」</p></div>
         <p>${esc(c.hook)}</p><div class="voice">${esc(x.nyaa)}</div>
         <div class="sec"><h3>💗 恋のスタイル</h3><p>${esc(c.style)}</p></div>
         <div class="sec"><h3>🎬 シーン別</h3><div class="scene"><div><b>LINE・連絡</b>${esc(x.line)}</div><div><b>デート</b>${esc(x.date)}</div><div><b>ケンカ</b>${esc(x.fight)}</div><div><b>告白</b>${esc(x.confess)}</div><div><b>脈ありサイン</b>${esc(x.sign)}</div></div></div>
@@ -303,6 +303,7 @@ function showModal(code) {
         <div class="sec"><h3>🧶 このタイプへの接し方</h3><p>${esc(x.howTo)}</p></div></div>`;
     el.onclick = e => { if (e.target === el || e.target.classList.contains("x-close")) el.remove(); };
     document.body.appendChild(el);
+    setupRoll(el.querySelector(".modal-cat"));
 }
 
 function showGuide() {

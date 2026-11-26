@@ -83,7 +83,7 @@ body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--font-main);lin
 .kv{display:grid;grid-template-columns:6.5em 1fr;gap:4px 8px;font-size:.9rem}.kv dt{color:var(--sub)}.kv dd{margin:0;font-weight:700}
 .modal{position:fixed;inset:0;background:rgba(90,61,68,.5);z-index:2000;display:flex;align-items:center;justify-content:center;padding:16px}
 .modal-box{position:relative;background:linear-gradient(180deg,#fffdfd,var(--pink-bg));border-radius:28px;max-width:520px;width:100%;max-height:90vh;overflow:auto;padding:24px 18px}
-.modal-box>img{display:block;width:min(55%,200px);margin:0 auto}.modal-box .sec{margin-top:12px}
+.modal-cat{display:block;width:min(55%,200px);margin:0 auto;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}.modal-box .sec{margin-top:12px}
 .x-close{position:absolute;right:12px;top:8px;border:0;background:none;font-size:1.8rem;cursor:pointer;color:var(--sub)}
 .guide-row{display:flex;gap:8px;align-items:baseline;font-size:.88rem;margin:6px 0}.guide-row code{background:var(--pink-pale);color:var(--pink);padding:1px 8px;border-radius:99px;font-weight:800}
 .app-promo{margin-top:18px;padding:18px 16px;border-radius:26px;border:2px solid #f3b6cc;background:linear-gradient(160deg,#fff7ec 0%,#ffe7f1 60%,#ffe0c2 100%);box-shadow:0 8px 22px rgba(238,120,136,.18)}
@@ -172,13 +172,21 @@ body.theme-app{
 .theme-app .likert.selected.l4{background:#9a7d63;border-color:#9a7d63}
 .theme-app .likert-cap{padding:0 4px;font-size:.78rem;font-weight:800}
 .theme-app .likert-cap span:first-child{color:var(--pink)}.theme-app .likert-cap span:last-child{color:#1f6a71}
-/* 結果画面のにゃこモビー：ごろごろ中は立ち姿を隠して、同じ枠にコマを表示する */
+/* 結果画面と詳細の小窓のにゃこモビー：ごろごろ中は立ち姿を隠して、同じ枠にコマを表示する */
 button.cat-stage{display:flex;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .cat-pose{position:relative;display:block;width:92%;aspect-ratio:1}
-.cat-stage .cat-pose img{display:block;width:100%;height:100%}
-.cat-roll{position:absolute;inset:0;visibility:hidden;background-size:400% 200%;background-repeat:no-repeat;filter:drop-shadow(0 8px 10px rgba(0,0,0,.1))}
-.cat-stage.rolling .cat-roll{visibility:visible}
-.cat-stage.rolling img{visibility:hidden}
+.modal-cat .cat-pose{width:100%}
+.cat-pose img,.cat-stage .cat-pose img{display:block;width:100%;height:100%}
+.cat-roll{position:absolute;inset:0;visibility:hidden;background-size:400% 200%;background-repeat:no-repeat}
+.cat-stage .cat-roll{filter:drop-shadow(0 8px 10px rgba(0,0,0,.1))}
+.rolling .cat-roll{visibility:visible}
+.rolling .cat-pose img{visibility:hidden}
+/* 動いていないときの吹き出し。猫の右上に寄せ、狭い画面ではカードの右端に収める */
+.roll-wrap{position:relative}
+.tap-hint{position:absolute;top:10px;left:min(100% - 76px,50% + min(36%,145px) - 22px);width:76px;padding:6px 0;border:2px solid #e08a3c;border-radius:16px;background:#fff;box-shadow:0 3px 0 #cf9a55;color:#8f3604;font:800 .72rem/1.35 var(--font-display);text-align:center;cursor:pointer}
+.tap-hint:after{content:"";position:absolute;left:12px;bottom:-6px;width:8px;height:8px;background:#fff;border:solid #e08a3c;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.modal-cat+.tap-hint{top:34px;left:min(100% - 76px,50% + min(27.5%,100px) - 12px)}
+.rolling+.tap-hint{visibility:hidden}
 /* 3の倍数の質問：にゃこモビーがカードの左右どちらかの端からのぞく */
 .theme-app .qCard{position:relative}
 .peek{position:absolute;top:0;left:0;right:0;overflow:hidden;border-radius:20px 20px 0 0;pointer-events:none;z-index:2}

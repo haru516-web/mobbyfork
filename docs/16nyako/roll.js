@@ -1,4 +1,4 @@
-// 結果画面のにゃこモビーのごろごろ（にゃっコレアプリの素材。横4×縦2の8コマ）
+// 結果画面と詳細の小窓のにゃこモビーのごろごろ（にゃっコレアプリの素材。横4×縦2の8コマ）
 // 立ち姿の絵に大きさと位置を合わせる値：[拡大率, 横のずらし%, 縦のずらし%]
 const ROLL_FIT = {
     "ragdoll": [1.15, -0.09, -1.42],
@@ -43,10 +43,12 @@ function setupRoll(stage) {
     };
     auto = setTimeout(play, ROLL_DELAY_MS);
     stage.onclick = play;
+    stage.nextElementSibling.onclick = play; // 吹き出し
 }
 
-function rollStage(c) {
+// cls：結果画面は丸い枠つきの "cat-stage"、詳細の小窓は枠なしの "modal-cat"
+function rollStage(c, cls = "cat-stage") {
     const id = c.img.split("/").pop().replace(".webp", ""), [s, x, y] = ROLL_FIT[id], src = `img/roll/${id}.webp`;
-    return `<button type="button" class="cat-stage" id="catStage" aria-label="${c.breed}。タップするとごろごろします"><span class="cat-pose"><img src="${c.img}" alt="">
-        <i class="cat-roll" data-src="${src}" style="background-image:url('${src}');transform:translate(${x}%,${y}%) scale(${s})"></i></span></button>`;
+    return `<div class="roll-wrap"><button type="button" class="${cls}" aria-label="${c.breed}。タップするとごろごろします"><span class="cat-pose"><img src="${c.img}" alt="">
+        <i class="cat-roll" data-src="${src}" style="background-image:url('${src}');transform:translate(${x}%,${y}%) scale(${s})"></i></span></button><span class="tap-hint" aria-hidden="true">タップして<br>みてね</span></div>`;
 }
