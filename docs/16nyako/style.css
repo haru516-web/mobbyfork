@@ -198,6 +198,13 @@ button.cat-stage{display:flex;padding:0;cursor:pointer;-webkit-tap-highlight-col
 @keyframes peek-fade{0%,100%{opacity:0}22%,80%{opacity:1}}
 /* 動きを減らす設定では、滑り込ませずにその場でふわっと表示する */
 @media(prefers-reduced-motion:reduce){.peek i{transform:translateX(var(--to)) rotate(var(--tilt));animation:peek-fade 2.2s ease both,peek-face 2.2s step-end both}}
+/* 結果の前の登録 */
+.gate{display:grid;gap:6px;margin-top:12px}
+.gate label{margin-top:8px;font-size:.85rem;font-weight:700;color:var(--ink-strong)}
+.gate input[type=text],.gate input[type=email],.gate select{width:100%;min-height:50px;padding:11px 14px;border:2px solid var(--wood-edge);border-radius:14px;background:var(--cream);color:var(--ink-strong);font:400 1rem var(--font-main)}
+.gate label.gate-consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-weight:400}
+.gate-consent input{flex-shrink:0;width:22px;height:22px;margin:2px 0 0;accent-color:#c65208}
+.gate-error{margin:10px 0 0;padding:8px 12px;border:2px solid #c4472f;border-radius:12px;background:#fff0ea;color:#9c2a14;font-size:.88rem;font-weight:700}
 /* キャラ一覧・相性・占い */
 .theme-app .tcard{background:var(--cream);border:2px solid var(--line);border-radius:22px;box-shadow:0 4px 0 #cf9a55}
 .theme-app .tcard b{color:var(--ink-strong)}

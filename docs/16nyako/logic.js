@@ -2,14 +2,18 @@
 const STORAGE_KEY = "nyanKoi16.v1";
 const PAGE_SIZE = 5;
 const SITE_URL = "https://www.mobby.online/16nyako";
-const state = { step: "intro", page: 0, answers: {}, questionOrder: null };
+const state = { step: "intro", page: 0, answers: {}, questionOrder: null, profile: null, sentToSheet: false };
+// 結果の前の登録（ほかの診断と同じ項目と送信先）
+const AGE_OPTIONS = ["16歳未満", "16歳", "17歳", "18歳", "19歳", "20歳", "21歳", "22歳", "23歳", "24歳", "25歳", "26歳", "27歳", "28歳", "29歳以上"];
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const ui = { compatYou: "", compatPartner: "", fortuneType: "" };
 const app = document.getElementById("app");
 
 function loadState() { try { const r = localStorage.getItem(STORAGE_KEY); if (r) Object.assign(state, JSON.parse(r)); } catch (e) { } }
 function saveState() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { } }
-function resetState() { state.step = "intro"; state.page = 0; state.answers = {}; state.questionOrder = null; try { localStorage.removeItem(STORAGE_KEY); } catch (e) { } render(); }
+function resetState() { state.step = "intro"; state.page = 0; state.answers = {}; state.questionOrder = null; state.profile = null; state.sentToSheet = false; try { localStorage.removeItem(STORAGE_KEY); } catch (e) { } render(); }
 function isDone() { return Object.keys(state.answers).length >= QUESTIONS.length; }
+function isRegistered() { const p = state.profile; return !!(p && p.name && p.email && p.age); }
 
 function shuffle(a) { const s = [...a]; for (let i = s.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [s[i], s[j]] = [s[j], s[i]]; } return s; }
 function questionOrder() {
@@ -49,20 +53,20 @@ function computeResult() {
     });
     return { code, hard, leftPct, confidence, adjacent, char: CHARACTERS[code], nyan: nyanLevel(leftPct) };
 }
-function myCode() { return isDone() ? computeResult().code : ""; }
+function myCode() { return isDone() && isRegistered() ? computeResult().code : ""; } // 登録前は相性・占いにも結果を出さない
 
 function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
 function list(items) { return `<ul>${items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`; }
 function selectHtml(id, value) { return `<select id="${id}">${Object.keys(CHARACTERS).map(c => `<option value="${c}"${c === value ? " selected" : ""}>${esc(CHARACTERS[c].name)}</option>`).join("")}</select>`; }
 
 function setTabs() {
-    const map = { intro: "navDiagnosis", quiz: "navDiagnosis", result: "navDiagnosis", types: "navTypes", compat: "navCompat", fortune: "navFortune" };
+    const map = { intro: "navDiagnosis", quiz: "navDiagnosis", gate: "navDiagnosis", result: "navDiagnosis", types: "navTypes", compat: "navCompat", fortune: "navFortune" };
     ["navDiagnosis", "navTypes", "navCompat", "navGuide", "navFortune"].forEach(id => document.getElementById(id).classList.toggle("active", map[state.step] === id));
 }
 function render() {
     window.scrollTo(0, 0);
     setTabs();
-    ({ intro: renderIntro, quiz: renderQuiz, types: renderTypes, compat: renderCompat, fortune: renderFortune }[state.step] || renderResult)();
+    ({ intro: renderIntro, quiz: renderQuiz, gate: renderGate, types: renderTypes, compat: renderCompat, fortune: renderFortune }[state.step] || renderResult)();
 }
 
 function renderIntro() {
@@ -146,6 +150,47 @@ function renderQuiz() {
     };
 }
 
+function renderGate() {
+    if (!isDone()) { state.step = "intro"; render(); return; }
+    if (isRegistered()) { state.step = "result"; saveState(); render(); return; }
+    const p = state.profile || {};
+    const ages = ["", ...AGE_OPTIONS].map(a => `<option value="${a}"${a === (p.age || "") ? " selected" : ""}>${a || "選択してください。"}</option>`).join("");
+    app.innerHTML = `<div class="card fade-in"><p class="kicker">あと少しで結果が見れます！</p><h2 class="title small">結果の閲覧には登録が必要です</h2>
+        <p class="note">入力後すぐに、あなたの恋のにゃこモビーを表示します。</p>
+        <form class="gate" id="gateForm" novalidate>
+          <label for="regName">ニックネーム</label><input id="regName" type="text" autocomplete="nickname" maxlength="80" placeholder="例）るな" value="${esc(p.name || "")}">
+          <label for="regEmail">メールアドレス</label><input id="regEmail" type="email" autocomplete="email" inputmode="email" placeholder="example@gmail.com" value="${esc(p.email || "")}">
+          <label for="regAge">年齢</label><select id="regAge">${ages}</select>
+          <label class="gate-consent"><input id="regConsent" type="checkbox"><span>入力した情報を連絡・改善のために保存することに同意します。</span></label>
+          <p class="gate-error" id="regErr" role="alert" hidden></p>
+          <div class="nav-row"><button type="button" class="btn" id="btnGateBack">‹ 戻る</button><button type="submit" class="btn primary">結果を見る ›</button></div>
+          <p class="note">送信される内容：ニックネーム、年齢、メール、診断結果と回答</p>
+        </form></div>`;
+    document.getElementById("btnGateBack").onclick = () => { state.step = "quiz"; saveState(); render(); };
+    document.getElementById("gateForm").onsubmit = e => {
+        e.preventDefault();
+        const value = id => document.getElementById(id).value.trim();
+        const name = value("regName"), email = value("regEmail"), age = value("regAge");
+        const message = !name ? "ニックネームを入力してください" : !email ? "メールアドレスを入力してください" : !EMAIL_PATTERN.test(email) ? "メールアドレスを正しく入力してください"
+            : !age ? "年齢を選択してください" : !document.getElementById("regConsent").checked ? "同意にチェックしてください" : "";
+        const error = document.getElementById("regErr");
+        error.textContent = message; error.hidden = !message;
+        if (message) return;
+        state.profile = { name, email, age }; state.step = "result"; saveState(); render();
+    };
+}
+
+// 結果を1回だけ送る。失敗しても結果は表示する
+function sendResult(r) {
+    if (state.sentToSheet) return;
+    state.sentToSheet = true; saveState();
+    const payload = { ...state.profile, type: r.code, axes: r.leftPct, answers: state.answers, source: "16nyako", createdAt: new Date().toISOString() };
+    const post = (url, body) => fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+        .then(res => { if (!res.ok) throw new Error(`${url} ${res.status}`); }).catch(e => console.error("[Nyako] 送信に失敗しました:", e.message));
+    post("/api/lead", payload);
+    post("/api/diagnosis", { ...payload, diagnosis_type: r.char.name });
+}
+
 function axisBar(k, r) {
     const a = AXES[k], left = r.leftPct[k], right = 100 - left;
     const lead = left >= 50 ? a.left : a.right, pct = Math.max(left, right);
@@ -171,7 +216,9 @@ function shareText(c) { return `私はにゃん恋モビー診断で「${c.name}
 
 function renderResult() {
     if (!isDone()) { state.step = "intro"; render(); return; }
+    if (!isRegistered()) { state.step = "gate"; saveState(); render(); return; }
     const r = computeResult(), c = r.char, x = EXTRAS[r.code];
+    sendResult(r);
     const rank = compatRanking(r.code).filter(t => t.code !== r.code);
     const best = rank.slice(0, 3), worst = rank[rank.length - 1];
     const rc = RESULT_COMPAT[r.code];
