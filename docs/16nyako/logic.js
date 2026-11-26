@@ -181,7 +181,7 @@ function renderResult() {
     const adj = r.adjacent.map(a => miniCard(a.code, `<span>${AXES[a.axis].name}が「${r.hard[a.axis] === "L" ? AXES[a.axis].right : AXES[a.axis].left}」寄りなら、こちらも</span>`)).join("");
     app.innerHTML = `<div class="card fade-in"><div class="love-result-hero">
         <p class="kicker">あなたの恋のにゃこモビーは…</p>
-        <div class="cat-stage"><img src="${c.img}" alt="${esc(c.breed)}"></div>
+        ${rollStage(c)}
         <h2 class="rname">${esc(c.name)}</h2>
         <p class="rbreed">${esc(c.breed)}</p>
         <span class="code-chip">タイプ ${r.code}</span>
@@ -223,6 +223,7 @@ function renderResult() {
 
         <div class="share"><a class="btn x" id="shareX" target="_blank" rel="noopener">Xでシェア</a><a class="btn line" id="shareLine" target="_blank" rel="noopener">LINEで送る</a><button class="btn" id="shareNative">シェアする</button></div>
         <div class="nav-row"><button class="btn" id="btnAll">16タイプを見る</button><button class="btn" id="btnRetry">もう一度診断する</button></div></div>`;
+    setupRoll(document.getElementById("catStage"));
     const text = shareText(c);
     document.getElementById("shareX").href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(SITE_URL)}`;
     document.getElementById("shareLine").href = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(SITE_URL)}&text=${encodeURIComponent(text)}`;
