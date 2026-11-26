@@ -515,16 +515,77 @@
       align-items: center;
       gap: 4px;
       width: max-content;
-      pointer-events: none;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      font-family: inherit;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .home-app:focus-visible {
+      outline: 2px solid #d2691e;
+      outline-offset: 4px;
+      border-radius: 12px;
+    }
+
+    /* 厚みのある立体ボタン：下の薄いクリーム色の面が厚み。ホバーで浮き、押すと沈む */
+    .home-app-key {
+      position: relative;
+      display: block;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 5px;
+      border-radius: 22%;
+      box-shadow:
+        0 3px 0 #efc592,
+        0 8px 14px rgba(120, 88, 60, 0.28);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+      animation: home-app-spin 5s ease-in-out infinite;
+    }
+
+    /* 5秒ごとに、横にくるっと1回転する（押したときの動き＝transform とは別の rotate を使う） */
+    @keyframes home-app-spin {
+      0%, 82% { rotate: y 0deg; }
+      100% { rotate: y 360deg; }
+    }
+
+    /* 上のつやと、下の縁の丸み（白い縁は付けない） */
+    .home-app-key::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.08) 36%, rgba(255, 255, 255, 0) 52%);
+      box-shadow: inset 0 -5px 7px rgba(214, 130, 50, 0.28);
     }
 
     .home-app-icon {
       display: block;
-      width: 48px;
-      height: 48px;
-      border-radius: 22%;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
       object-fit: cover;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    }
+
+    @media (hover: hover) {
+      .home-app:hover .home-app-key {
+        transform: translateY(-2px);
+        filter: brightness(1.04);
+        box-shadow:
+          0 4px 0 #efc592,
+          0 12px 18px rgba(120, 88, 60, 0.3);
+      }
+    }
+
+    .home-app:active .home-app-key {
+      transform: translateY(3px);
+      filter: brightness(0.96);
+      box-shadow:
+        0 0 0 #efc592,
+        0 2px 4px rgba(120, 88, 60, 0.28);
     }
 
     .home-app-text {
@@ -543,7 +604,7 @@
         left: 24px;
       }
 
-      .home-app-icon {
+      .home-app-key {
         width: 56px;
         height: 56px;
       }
@@ -10027,10 +10088,10 @@
 
   <div id="main-content">
     <div class="hero-intro">
-      <div class="home-app">
-        <img class="home-app-icon" src="16nyako/img/nyakkore-icon.webp" alt="にゃっコレのアプリアイコン" width="56" height="56" decoding="async" />
+      <button type="button" class="home-app" id="openNyakkoreFromHome" aria-haspopup="dialog">
+        <span class="home-app-key"><img class="home-app-icon" src="16nyako/img/nyakkore-icon.webp" alt="にゃっコレのアプリアイコン" width="56" height="56" decoding="async" /></span>
         <span class="home-app-text">アプリもあるよ</span>
-      </div>
+      </button>
       <div class="mobby-title" aria-label="Mobby">
         <img src="mobby-custom/assets/stickers/Logo.webp" alt="Mobby" fetchpriority="high" decoding="async" />
         <h1 class="headline reveal delay-200">沈黙に耳を澄ませる</h1>
@@ -16007,7 +16068,9 @@
       var opener = document.getElementById('openNyakkorePopup');
       var closer = document.getElementById('closeNyakkorePopup');
       if (!popup || !opener) return;
-      opener.addEventListener('click', function () { if (typeof openPopup === 'function') openPopup('nyakkorePopup'); });
+      [opener, document.getElementById('openNyakkoreFromHome')].forEach(function (button) {
+        if (button) button.addEventListener('click', function () { if (typeof openPopup === 'function') openPopup('nyakkorePopup'); });
+      });
       if (closer) closer.addEventListener('click', function () { if (typeof closePopup === 'function') closePopup('nyakkorePopup'); });
       popup.addEventListener('click', function (e) { if (e.target === popup && typeof closePopup === 'function') closePopup('nyakkorePopup'); });
       window.addEventListener('keydown', function (e) {
