@@ -93,6 +93,25 @@ function renderIntro() {
     };
 }
 
+// 3の倍数の質問に答えると、結果に出ない猫種のにゃこモビーがカードの端からちらっとのぞく
+// 画像は「いないいないばあ」の8コマ（横4×縦2）。Q3、Q6…の順に1匹ずつ使う
+const PEEK_CATS = ["chatora", "hachiware", "siamese-seal-point", "shiro-neko", "american-shorthair", "kuro-neko", "abyssinian", "japanese-bobtail", "kijitora", "birman", "exotic-shorthair", "saba-tora", "american-curl"];
+function peekImage(no) { const img = new Image(); img.src = `img/peek/${PEEK_CATS[(no / 3 - 1) % PEEK_CATS.length]}.webp`; return img; }
+function showPeek(card, no) {
+    const img = peekImage(no);
+    img.decode().then(() => {
+        if (!card.isConnected) return;
+        card.querySelector(".peek")?.remove();
+        const layer = document.createElement("div"), cat = document.createElement("i");
+        layer.className = `peek ${Math.random() < 0.5 ? "left" : "right"}`;
+        layer.setAttribute("aria-hidden", "true");
+        layer.style.height = `${card.querySelector(".likert-row").offsetTop}px`; // 回答の丸にはかぶせない
+        cat.style.backgroundImage = `url("${img.src}")`;
+        cat.onanimationend = e => { if (e.animationName !== "peek-face") layer.remove(); };
+        layer.appendChild(cat); card.appendChild(layer);
+    }).catch(() => { });
+}
+
 function renderQuiz() {
     const sq = shuffledQuestions(), start = state.page * PAGE_SIZE, qs = sq.slice(start, start + PAGE_SIZE);
     const totalPages = Math.ceil(sq.length / PAGE_SIZE), prog = Math.round(Object.keys(state.answers).length / sq.length * 100);
@@ -106,13 +125,19 @@ function renderQuiz() {
     app.innerHTML = `<div class="card"><div class="progress"><div class="progress-meta"><span>進行状況</span><span>${prog}%</span></div><div class="track"><div class="fill" style="width:${prog}%"></div></div></div>
         ${cards}
         <div class="nav-row"><button class="btn" id="btnPrev" ${state.page === 0 ? "disabled" : ""}>‹ 戻る</button><button class="btn primary" id="btnNext">${last ? "結果を見る ›" : "次へ ›"}</button></div></div>`;
-    qs.forEach(q => document.querySelectorAll(`button.likert[data-qid="${q.id}"]`).forEach(b => {
-        b.onclick = () => {
-            state.answers[q.id] = parseInt(b.dataset.val, 10); saveState();
-            document.querySelectorAll(`button.likert[data-qid="${q.id}"]`).forEach(x => x.classList.remove("selected"));
-            b.classList.add("selected");
-        };
-    }));
+    qs.forEach((q, i) => {
+        const no = start + i + 1, peeks = no % 3 === 0;
+        if (peeks && !state.answers[q.id]) peekImage(no); // 先読み
+        document.querySelectorAll(`button.likert[data-qid="${q.id}"]`).forEach(b => {
+            b.onclick = () => {
+                const first = !state.answers[q.id];
+                state.answers[q.id] = parseInt(b.dataset.val, 10); saveState();
+                document.querySelectorAll(`button.likert[data-qid="${q.id}"]`).forEach(x => x.classList.remove("selected"));
+                b.classList.add("selected");
+                if (peeks && first) showPeek(b.closest(".qCard"), no);
+            };
+        });
+    });
     document.getElementById("btnPrev").onclick = () => { state.page--; saveState(); render(); };
     document.getElementById("btnNext").onclick = () => {
         if (qs.some(q => !state.answers[q.id])) { alert("まだ回答していない項目があります"); return; }

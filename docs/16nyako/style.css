@@ -172,6 +172,17 @@ body.theme-app{
 .theme-app .likert.selected.l4{background:#9a7d63;border-color:#9a7d63}
 .theme-app .likert-cap{padding:0 4px;font-size:.78rem;font-weight:800}
 .theme-app .likert-cap span:first-child{color:var(--pink)}.theme-app .likert-cap span:last-child{color:#1f6a71}
+/* 3の倍数の質問：にゃこモビーがカードの左右どちらかの端からのぞく */
+.theme-app .qCard{position:relative}
+.peek{position:absolute;top:0;left:0;right:0;overflow:hidden;border-radius:20px 20px 0 0;pointer-events:none;z-index:2}
+.peek i{position:absolute;bottom:0;width:96px;height:96px;background-size:400% 200%;background-repeat:no-repeat;animation:peek-in 2.2s ease both,peek-face 2.2s step-end both}
+.peek.left i{left:0;--from:-110%;--to:-26%;--tilt:30deg}
+.peek.right i{right:0;--from:110%;--to:26%;--tilt:-30deg}
+@keyframes peek-in{0%,100%{transform:translateX(var(--from)) rotate(var(--tilt))}22%,80%{transform:translateX(var(--to)) rotate(var(--tilt))}}
+@keyframes peek-face{0%{background-position:0 0}45%{background-position:66.6667% 100%}64%,100%{background-position:0 0}}
+@keyframes peek-fade{0%,100%{opacity:0}22%,80%{opacity:1}}
+/* 動きを減らす設定では、滑り込ませずにその場でふわっと表示する */
+@media(prefers-reduced-motion:reduce){.peek i{transform:translateX(var(--to)) rotate(var(--tilt));animation:peek-fade 2.2s ease both,peek-face 2.2s step-end both}}
 /* キャラ一覧・相性・占い */
 .theme-app .tcard{background:var(--cream);border:2px solid var(--line);border-radius:22px;box-shadow:0 4px 0 #cf9a55}
 .theme-app .tcard b{color:var(--ink-strong)}
