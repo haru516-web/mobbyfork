@@ -1,7 +1,7 @@
 /* にゃん恋診断：既存の恋愛モビー診断（16renai）に合わせた、クリーム×ピンクの見た目 */
 :root{
-  --font-main:"M PLUS Rounded 1c","Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;
-  --font-display:"Yomogi","Kiwi Maru","M PLUS Rounded 1c",cursive;
+  --font-main:"BIZ UDPGothic","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;
+  --font-display:"M PLUS Rounded 1c","Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif;
   --ink:#5a3d44;--ink-strong:#35282d;--sub:#8c7077;--pink:#e23d75;--pink-soft:#f472b6;--pink-pale:#ffe7f1;--pink-bg:#fff4f9;
   --line:#f3d3df;--cream-a:#fffaf3;--cream-b:#f8efe4;--blue:#7d8fd6;--amber:#ffbe74;
 }
@@ -100,3 +100,85 @@ body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--font-main);lin
 .app-promo__badge{display:flex;justify-content:center}.app-promo__badge img{display:block;width:200px;height:auto}
 footer{text-align:center;color:var(--sub);font-size:.76rem;padding:18px 16px 0}
 @media(min-width:600px){.tgrid{grid-template-columns:repeat(4,1fr)}.title{font-size:2.2rem}}
+
+/* ---- 全画面：にゃっコレアプリ風（オレンジ・クリーム・茶色） ---- */
+body.theme-app{
+  --ink:#4a2f1d;--ink-strong:#371f10;--sub:#6f503a;--pink:#a9420a;--pink-soft:#ee7a24;--pink-pale:#ffe3b8;--pink-bg:#fcecca;
+  --line:#dfae6c;--amber:#e58a00;--cream:#fff9ec;--wood:#7c4521;--wood-edge:#b9762f;
+  --orange-btn:linear-gradient(180deg,#c65208 0%,#a94004 100%);
+  background:repeating-linear-gradient(90deg,rgba(105,52,14,.13) 0 2px,transparent 2px 92px),linear-gradient(180deg,#f0b36a 0%,#d8894a 100%);
+  background-color:#d8894a;
+}
+/* 書体：見出し・ボタン・名前は丸ゴシック、本文はユニバーサルデザインの BIZ UDPゴシック */
+.theme-app :is(.title,.kicker,.sec h3,.tab,.btn,.code-chip,.rcatch,.level span,.tcard b,.mini b,.bigstars+h3,.app-promo__name,.app-promo__sub,.guide-row code){font-family:var(--font-display)}
+.theme-app .back{background:var(--cream);border:2px solid var(--wood-edge);box-shadow:0 3px 0 #96591f}
+.theme-app .brandline{font-family:var(--font-display);font-weight:900;color:var(--ink-strong)}
+.theme-app .tab{background:var(--cream);border:2px solid var(--wood-edge);box-shadow:0 3px 0 #96591f}
+.theme-app .tab.active{background:var(--orange-btn);border-color:#a63f06;color:#fff;box-shadow:0 3px 0 #873204;text-shadow:0 1px 1px rgba(80,25,0,.45)}
+.theme-app .card{background:var(--pink-bg);border:4px solid var(--wood-edge);box-shadow:0 0 0 2px #8a511f,0 14px 30px rgba(80,38,8,.3)}
+.theme-app .love-result-hero .kicker{display:table;margin:0 auto 6px;padding:5px 18px;border-radius:999px;background:var(--wood);color:#fff6e3}
+.theme-app .cat-stage{background:radial-gradient(circle,#fffdf5 0%,#fff0d2 62%,#f7cf8c 100%);border:5px solid #e6ac58;box-shadow:0 6px 0 #c4873a,inset 0 0 0 3px #fff6e0}
+.theme-app .rname{font-family:var(--font-display);font-weight:900;font-size:1.55rem;line-height:1.45;margin-top:16px;text-wrap:balance;word-break:auto-phrase}
+.theme-app .code-chip{background:var(--cream);border:2px solid var(--line)}
+.theme-app .rcatch{text-wrap:balance;word-break:auto-phrase;font-size:1.05rem}
+.theme-app .love-result-hero+p{margin:0;padding:14px 16px;background:var(--cream);border:2px solid var(--line);border-radius:20px;color:var(--ink-strong)}
+.theme-app .voice{margin-top:14px;font-family:var(--font-display);font-weight:800;font-size:1rem;color:#8f3604;border:2px dashed #e08a3c}
+.theme-app .sec{background:var(--cream);border:2px solid var(--line);box-shadow:0 4px 0 #cf9a55;color:var(--ink-strong)}
+.theme-app .sec h3{width:fit-content;max-width:100%;padding:4px 16px;border-radius:18px;background:var(--wood);color:#fff6e3;box-shadow:inset 0 -2px 0 rgba(40,16,0,.35)}
+.theme-app .sec h3:before{content:none}
+.theme-app .sec li::marker{color:var(--pink-soft)}
+.theme-app .sub{color:var(--sub)}
+.theme-app .level b{font-family:var(--font-display);font-weight:900}
+.theme-app .level-meter i{background:#efd9b0;box-shadow:inset 0 1px 2px rgba(110,60,15,.3)}
+.theme-app .level-meter i.on{background:linear-gradient(180deg,#ff9d3f,#dd5c0c)}
+.theme-app .axis-head{font-size:.86rem;font-weight:700}
+.theme-app .axis-bar{font-size:.74rem;font-weight:700}.theme-app .axis-bar .side{width:5.6em}
+.theme-app .axis-track{background:#efd9b0;border-color:#c99355}
+.theme-app .axis-track i{opacity:.75}
+.theme-app .axis-track em{width:16px;height:16px;margin-left:-8px;top:-4px;background:#c94c08;border:2px solid #fff;box-shadow:0 1px 4px rgba(80,35,0,.5)}
+.theme-app .scene div{background:#ffefd0;border:1px solid #ebc88f}
+.theme-app .mini{background:#fff1d4;border:2px solid var(--line);box-shadow:0 3px 0 #cf9a55;margin-top:10px}
+.theme-app .mini span{color:var(--sub)}.theme-app .mini .stars{color:#a45800}
+.theme-app .btn{background:var(--cream);border:2px solid var(--wood-edge);box-shadow:0 4px 0 #96591f;color:var(--ink-strong)}
+.theme-app .btn.primary{border:2px solid #a63f06;background:var(--orange-btn);color:#fff;box-shadow:0 4px 0 #873204,inset 0 2px 0 rgba(255,255,255,.3);text-shadow:0 1px 1px rgba(80,25,0,.45)}
+.theme-app .btn.x{background:#111;border-color:#111;color:#fff;box-shadow:0 4px 0 #000}
+.theme-app .btn.line{background:#06c755;border-color:#049a42;color:#fff;box-shadow:0 4px 0 #04803a}
+.theme-app .btn:active:not([disabled]),.theme-app .tab:active{transform:translateY(2px)}
+.theme-app .app-promo{background:linear-gradient(180deg,#fffaf2 0%,#ffedd2 100%);border:3px solid #ee9a45;box-shadow:0 5px 0 #c9741f}
+.theme-app .app-promo__points li{background:#fff;border:1px solid #ebc88f}
+.theme-app .app-promo__eyebrow{font-family:var(--font-display);font-weight:900}
+.theme-app footer{color:var(--ink-strong);font-weight:700}
+.theme-app .modal{background:rgba(55,28,10,.66)}
+.theme-app .modal-box{background:var(--pink-bg);border:4px solid var(--wood-edge)}
+/* トップ画面 */
+.theme-app .card>.kicker{text-wrap:balance;word-break:auto-phrase}
+.theme-app .card>.kicker{display:table;margin:0 auto 6px;padding:5px 18px;border-radius:999px;background:var(--wood);color:#fff6e3}
+.theme-app .subcopy{font-family:var(--font-display);font-weight:900}
+.theme-app .hero-row{padding:12px 8px;background:radial-gradient(ellipse at center,#fffdf5 0%,#fff0d2 62%,#f7cf8c 100%);border:3px solid #e6ac58;border-radius:24px;box-shadow:0 4px 0 #c4873a}
+.theme-app .divider{margin-top:18px}
+.theme-app .divider:before,.theme-app .divider:after{height:2px;background:linear-gradient(90deg,transparent,#c99355,transparent)}
+.theme-app .lead{padding:14px 12px;background:var(--cream);border:2px solid var(--line);border-radius:20px;color:var(--ink-strong)}
+.theme-app .note{font-weight:700}
+/* 質問画面（左右の余白を詰めて、丸ボタンの大きさを保つ） */
+.theme-app .card:has(.qCard){padding:20px 10px}
+.theme-app .progress{padding:0 6px;margin-bottom:16px}.theme-app .progress-meta{font-weight:700}
+.theme-app .track{background:#efd9b0;box-shadow:inset 0 1px 2px rgba(110,60,15,.3)}
+.theme-app .fill{background:linear-gradient(180deg,#ff9d3f,#dd5c0c)}
+.theme-app .qCard,.theme-app .qCard:last-of-type{margin-top:14px;padding:16px 6px 12px;background:var(--cream);border:2px solid var(--line);border-radius:22px;box-shadow:0 4px 0 #cf9a55}
+.theme-app .qCard .kicker{display:table;margin:0 0 8px 6px;padding:2px 12px;border-radius:999px;background:var(--wood);color:#fff6e3}
+.theme-app .qtext{padding:0 6px}
+.theme-app .likert{height:auto;aspect-ratio:1;min-width:0;border-width:3px;box-shadow:0 2px 0 rgba(110,60,15,.25);--blue:#2f858c}
+.theme-app .likert.l4{border-color:#b89a7e}
+.theme-app .likert.selected.l4{background:#9a7d63;border-color:#9a7d63}
+.theme-app .likert-cap{padding:0 4px;font-size:.78rem;font-weight:800}
+.theme-app .likert-cap span:first-child{color:var(--pink)}.theme-app .likert-cap span:last-child{color:#1f6a71}
+/* キャラ一覧・相性・占い */
+.theme-app .tcard{background:var(--cream);border:2px solid var(--line);border-radius:22px;box-shadow:0 4px 0 #cf9a55}
+.theme-app .tcard b{color:var(--ink-strong)}
+.theme-app .selrow label{font-weight:700}
+.theme-app .selrow select{background:var(--cream);border:2px solid var(--wood-edge);box-shadow:0 3px 0 #96591f;color:var(--ink-strong)}
+.theme-app .bigstars{color:#a45800}
+.theme-app .fortune-score{gap:6px}
+.theme-app .fortune-score div{flex:1;min-width:0;padding:8px 0;background:var(--cream);border:2px solid var(--line);border-radius:16px;box-shadow:0 3px 0 #cf9a55;font-weight:700}
+.theme-app .fortune-score b{font-size:min(1.05rem,4.2vw);letter-spacing:0}
+.theme-app .kv dt{font-weight:700}

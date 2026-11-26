@@ -79,6 +79,7 @@ function renderIntro() {
         <p class="note">所要時間は約5分。診断後は、相性チェックや今日のごよみも楽しめます。</p>
         <div class="center"><button class="btn primary full" id="btnStart">♡　${answered > 0 && !isDone() ? "つづきから診断する" : isDone() ? "結果を見る" : "診断をはじめる"}　›</button></div>
         ${answered > 0 && !isDone() ? `<p class="note">${answered}/${QUESTIONS.length}問 回答済み</p>` : ""}
+        ${appPromo()}
     </div>`;
     document.getElementById("btnStart").onclick = () => {
         if (isDone()) state.step = "result";
@@ -148,6 +149,9 @@ function renderResult() {
     const r = computeResult(), c = r.char, x = EXTRAS[r.code];
     const rank = compatRanking(r.code).filter(t => t.code !== r.code);
     const best = rank.slice(0, 3), worst = rank[rank.length - 1];
+    const rc = RESULT_COMPAT[r.code];
+    const bestWhy = rc.best === best[0].code ? rc.why : best[0].bests[0].good;
+    const worstTip = rc.worst === worst.code ? rc.tip : worst.cautions[0].tip;
     const meter = Array.from({ length: 7 }, (_, i) => `<i class="${i < r.nyan.level ? "on" : ""}"></i>`).join("");
     const adj = r.adjacent.map(a => miniCard(a.code, `<span>${AXES[a.axis].name}が「${r.hard[a.axis] === "L" ? AXES[a.axis].right : AXES[a.axis].left}」寄りなら、こちらも</span>`)).join("");
     app.innerHTML = `<div class="card fade-in"><div class="love-result-hero">
@@ -181,10 +185,10 @@ function renderResult() {
 
         <div class="sec"><h3>💞 相性のいい猫ベスト3</h3>
           ${best.map((t, i) => miniCard(t.code, `<span class="stars">${starsText(t.stars)}</span> <span>${esc(t.label)}</span>`)).join("")}
-          <p class="sub" style="margin-top:10px">いちばん合う理由：${esc(best[0].bests[0].good)}</p>
+          <p class="sub" style="margin-top:10px">いちばん合う理由：${esc(bestWhy)}</p>
           <h3 style="margin-top:14px">⚠️ すれ違いやすい猫</h3>
           ${miniCard(worst.code, `<span class="stars">${starsText(worst.stars)}</span> <span>${esc(worst.label)}</span>`)}
-          <p class="sub" style="margin-top:10px">コツ：${esc(worst.worst.tip)}</p>
+          <p class="sub" style="margin-top:10px">コツ：${esc(worstTip)}</p>
           <div class="center"><button class="btn" id="btnGoCompat">もっと相性を見る ›</button></div></div>
 
         ${adj ? `<div class="sec"><h3>🔀 迷ったら、こちらも</h3><p class="sub">「場面による」の軸があるので、隣のタイプにもなりえます。</p>${adj}</div>` : ""}
@@ -227,8 +231,8 @@ function renderCompat() {
         <div class="bigstars">${starsText(cp.stars)}</div>
         <h3 class="title small" style="margin:4px 0">${esc(cp.label)}</h3><p class="lead">${esc(cp.desc)}</p>
         <div class="sec"><h3>💞 惹かれ合うところ</h3>${list(cp.bests.map(x => x.good))}</div>
-        <div class="sec"><h3>⚠️ すれ違いやすいところ</h3><p>${esc(cp.worst.caution)}</p></div>
-        <div class="sec"><h3>🧶 うまくいくコツ</h3>${list([cp.worst.tip, ...cp.bests.map(x => x.tip)].filter((v, i, s) => s.indexOf(v) === i))}</div>
+        <div class="sec"><h3>⚠️ すれ違いやすいところ</h3>${list(cp.cautions.map(x => x.caution))}</div>
+        <div class="sec"><h3>🧶 うまくいくコツ</h3>${list([...cp.cautions, ...cp.bests].map(x => x.tip).filter((v, i, s) => s.indexOf(v) === i))}</div>
         <div class="sec"><h3>🔑 ${esc(b.name)}への接し方</h3><p>${esc(bx.howTo)}</p><p class="sub">脈ありサイン：${esc(bx.sign)}</p></div>
         <div class="sec"><h3>📋 ${esc(a.name)}の相性ランキング</h3><p class="sub">タップすると、その猫との相性を表示します。</p>
           ${ranking.map(t => `<button class="mini" data-pick="${t.code}"><img src="${CHARACTERS[t.code].img}" alt=""><span><b>${esc(CHARACTERS[t.code].name)}</b><span class="stars">${starsText(t.stars)}</span> ${esc(t.label)}</span></button>`).join("")}</div></div>`;
@@ -247,7 +251,7 @@ function renderFortune() {
         <div class="pair"><img src="${c.img}" alt="" style="width:45%"></div>
         <div class="bigstars" style="color:var(--pink-soft)">${hearts(f.overall)}</div><p class="note">今日の恋予報</p>
         <div class="fortune-score"><div>恋愛運<b>${hearts(f.love)}</b></div><div>LINE運<b>${hearts(f.line)}</b></div><div>おでかけ運<b>${hearts(f.outing)}</b></div></div>
-        <div class="sec"><h3>🗒 今日のひとこと</h3><p>${esc(f.message)}</p></div>
+        <div class="sec"><h3>📝 今日のひとこと</h3><p>${esc(f.message)}</p></div>
         <div class="sec"><h3>🎯 今日のミッション</h3><p>${esc(f.mission)}</p></div>
         <div class="sec"><h3>🍀 ラッキー</h3><dl class="kv"><dt>アイテム</dt><dd>${esc(f.item)}</dd><dt>カラー</dt><dd>${esc(f.color)}</dd><dt>スポット</dt><dd>${esc(f.spot)}</dd></dl></div>
         <div class="sec"><h3>🔑 今日のキーパーソン</h3><p class="sub">今日の流れを動かしてくれるかもしれない猫。</p>${miniCard(f.keyperson, `<span>${esc(k.catch)}</span>`)}</div>
